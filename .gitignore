@@ -1,0 +1,18 @@
+# ide
+/.idea/
+/.fleet/
+/.run/
+
+# composer
+composer.lock
+/composer.phar
+/auth.json
+/vendor/*
+
+# caches
+.psalm.cache
+.phpcs.cache
+.phpunit.cache
+
+# tests
+coverage/

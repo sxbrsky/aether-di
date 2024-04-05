@@ -1,0 +1,59 @@
+{
+    "name": "ionbytes/container",
+    "description": "The dependency injection container.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "di",
+        "ioc",
+        "psr11",
+        "psr-11",
+        "container"
+    ],
+    "support": {
+        "issues": "https://github.com/ionbytes/container/issues",
+        "source": "https://github.com/ionbytes/container"
+    },
+    "require": {
+        "php": ">=8.2",
+        "psr/container": "^2.0@dev"
+    },
+    "require-dev": {
+        "ionbytes/coding-standard": "dev-master",
+        "phpstan/phpstan": "2.0.x-dev",
+        "phpunit/phpunit": "^11.1.x-dev",
+        "vimeo/psalm": "^6.0@dev"
+    },
+    "provide": {
+        "psr/container-implementation": "2.0.2"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "IonBytes\\Container\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IonBytes\\Container\\Tests\\Unit\\": "tests/unit/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@static-analysis",
+            "@phpunit"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf -vpw",
+        "static-analysis": "psalm --shepherd --stats",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-html coverage"
+    }
+}
