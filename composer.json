@@ -20,6 +20,7 @@
     },
     "require-dev": {
         "ionbytes/coding-standard": "dev-master",
+        "phpbench/phpbench": "^1.2@dev",
         "phpstan/phpstan": "2.0.x-dev",
         "phpunit/phpunit": "^11.1.x-dev",
         "vimeo/psalm": "^6.0@dev"
@@ -35,7 +36,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "IonBytes\\Container\\Tests\\Unit\\": "tests/unit/"
+            "IonBytes\\Container\\Tests\\Unit\\": "tests/unit/",
+            "IonBytes\\Container\\Tests\\Benchmark\\": "tests/benchmark/"
         }
     },
     "config": {
@@ -54,6 +56,7 @@
         "cs-fix": "phpcbf -vpw",
         "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-html coverage"
+        "test-coverage": "phpunit --colors=always --coverage-html coverage",
+        "phpbench": "phpbench run --report=compressed"
     }
 }
