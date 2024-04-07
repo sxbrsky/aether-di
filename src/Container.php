@@ -13,14 +13,15 @@ namespace IonBytes\Container;
 
 use Closure;
 use Exception;
-use IonBytes\Container\Exception\ResolvingException;
 use IonBytes\Container\Exception\CircularDependencyException;
 use IonBytes\Container\Exception\EntryNotFoundException;
+use IonBytes\Container\Exception\ResolvingException;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
 
 use function array_key_exists;
+use function array_keys;
 use function array_pop;
 use function class_exists;
 use function implode;
@@ -93,7 +94,7 @@ class Container implements ContainerInterface
                     'The target [%s] is not instantiable%s.',
                     $concrete,
                     !empty($this->buildStack)
-                        ? ' while building [' . implode(',', $this->buildStack) . ']'
+                        ? ' while building [' . implode(',', array_keys($this->buildStack)) . ']'
                         : ''
                 )
             );
