@@ -3,7 +3,6 @@
   <file src="src/Container.php">
     <MixedReturnStatement>
       <code><![CDATA[$concrete($this)]]></code>
-      <code><![CDATA[$parameter->getDefaultValue()]]></code>
     </MixedReturnStatement>
   </file>
   <file src="tests/unit/ContainerTest.php">

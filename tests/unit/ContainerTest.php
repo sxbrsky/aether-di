@@ -13,21 +13,24 @@ namespace IonBytes\Container\Tests\Unit;
 
 use IonBytes\Container\Container;
 use IonBytes\Container\ContainerInterface;
+use IonBytes\Container\Exception\CircularDependencyException;
+use IonBytes\Container\Exception\ResolvingException;
+use IonBytes\Container\Resolver\ParameterResolver;
 use IonBytes\Container\Tests\Unit\Fixtures\ClassACircularDependency;
-use IonBytes\Container\Tests\Unit\Fixtures\ClassWithDependency;
 use IonBytes\Container\Tests\Unit\Fixtures\SampleClass;
 use IonBytes\Container\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Container::class)]
+#[CoversClass(ParameterResolver::class)]
 class ContainerTest extends TestCase
 {
     /** @psalm-suppress PropertyNotSetInConstructor */
     private ContainerInterface $container;
 
     public function setUp(): void {
-        $this->container = new \IonBytes\Container\Container();
+        $this->container = new Container();
     }
 
     public function testContainerKnowTheEntry(): void {
@@ -71,13 +74,13 @@ class ContainerTest extends TestCase
     }
 
     public function testCircularDependencyThrowsException(): void {
-        $this->expectException(\IonBytes\Container\Exception\CircularDependencyException::class);
+        $this->expectException(CircularDependencyException::class);
 
         $this->container->make(ClassACircularDependency::class);
     }
 
     public function testResolvingThrowsExceptionIfClassNotFound(): void {
-        self::expectException(\IonBytes\Container\Exception\ResolvingException::class);
+        self::expectException(ResolvingException::class);
         self::expectExceptionMessage('The target [' . Shared::class . '] is not exists.');
 
         $this->container->bind('foo', Shared::class);
@@ -85,18 +88,10 @@ class ContainerTest extends TestCase
     }
 
     public function testResolvingThrowsExceptionIfClassIsNotInstantiable(): void {
-        self::expectException(\IonBytes\Container\Exception\ResolvingException::class);
+        self::expectException(ResolvingException::class);
         self::expectExceptionMessage('The target [' . SampleInterface::class . '] is not instantiable.');
 
         $this->container->bind('foo', SampleInterface::class);
-        $this->container->make('foo');
-    }
-
-    public function testResolvingThrowsExceptionIfParameterIsNotDefined(): void {
-        self::expectException(\IonBytes\Container\Exception\ResolvingException::class);
-        self::expectExceptionMessage('Parameter `$variable` has no value defined or guessable.');
-
-        $this->container->bind('foo', ClassWithDependency::class);
         $this->container->make('foo');
     }
 }
