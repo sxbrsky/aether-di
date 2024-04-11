@@ -50,7 +50,7 @@
         "check": [
             "@cs-check",
             "@static-analysis",
-            "@phpunit"
+            "@test"
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf -vpw",
