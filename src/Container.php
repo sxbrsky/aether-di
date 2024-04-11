@@ -16,9 +16,9 @@ use Exception;
 use IonBytes\Container\Exception\CircularDependencyException;
 use IonBytes\Container\Exception\EntryNotFoundException;
 use IonBytes\Container\Exception\ResolvingException;
+use IonBytes\Container\Resolver\ParameterResolver;
 use ReflectionClass;
 use ReflectionException;
-use ReflectionParameter;
 
 use function array_key_exists;
 use function array_keys;
@@ -108,24 +108,19 @@ class Container implements ContainerInterface
 
         $this->buildStack[$concrete] = true;
 
-        $constructor = $reflection->getConstructor();
+        try {
+            $constructor = $reflection->getConstructor();
+            if ($constructor !== null) {
+                $resolver = new ParameterResolver($this);
+                $instances = $resolver->resolveParameters($constructor, $parameters);
 
-        if ($constructor !== null) {
-            try {
-                $arguments = $this->resolveDependencies(
-                    $constructor->getParameters(),
-                    $parameters
-                );
-
-                return $reflection->newInstanceArgs($arguments);
-            } finally {
-                array_pop($this->buildStack);
+                return $reflection->newInstanceArgs($instances);
             }
+
+            return $reflection->newInstanceWithoutConstructor();
+        } finally {
+            array_pop($this->buildStack);
         }
-
-        array_pop($this->buildStack);
-
-        return $reflection->newInstanceWithoutConstructor();
     }
 
     /**
@@ -201,69 +196,6 @@ class Container implements ContainerInterface
 
         return $abstract;
     }
-
-    /**
-     * Resolves class dependencies.
-     *
-     * @param \ReflectionParameter[] $reflectionParameters
-     *  The class reflection parameters.
-     * @param array<string, array|object|scalar|null> $parameters
-     *  Parameters to construct a new class.
-     *
-     * @return array<array|null|object|scalar>
-     *
-     * @throws \IonBytes\Container\Exception\ResolvingException
-     * @throws \IonBytes\Container\Exception\EntryNotFoundException
-     */
-    private function resolveDependencies(array $reflectionParameters, array $parameters): array {
-        $arguments = [];
-
-        foreach ($reflectionParameters as $parameter) {
-            /** @var \ReflectionNamedType $type */
-            $type = $parameter->getType();
-
-            if (array_key_exists($parameter->getName(), $parameters)) {
-                $arguments[] = $parameters[$parameter->getName()];
-            } elseif (!$type->isBuiltin()) {
-                $arguments[] = $this->make($type->getName());
-            } else {
-                if ($parameter->isDefaultValueAvailable() || $parameter->isOptional()) {
-                    $arguments[] = $this->getParameterDefaultValue($parameter);
-                    continue;
-                }
-
-                throw new ResolvingException(
-                    "Parameter `\${$parameter->getName()}` has no value defined or guessable.",
-                );
-            }
-        }
-
-        return $arguments;
-    }
-
-    /**
-     * Gets the default value of a parameter.
-     *
-     * @param \ReflectionParameter $parameter
-     *  The parameter to get the default value.
-     *
-     * @return array|object|scalar|null
-     *  Returns default value.
-     */
-    private function getParameterDefaultValue(ReflectionParameter $parameter): array|object|int|float|string|bool|null {
-        try {
-            return $parameter->getDefaultValue();
-        } catch (ReflectionException) {
-            throw new ResolvingException(
-                sprintf(
-                    'The parameter `$%s` has no type defined or guessable. It has a default value,' .
-                    "It has a default value, but the default value can't be read through Reflection",
-                    $parameter->getName()
-                )
-            );
-        }
-    }
-
 
     /**
      * Gets concrete factory.
