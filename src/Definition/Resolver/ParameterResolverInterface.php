@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Resolver;
+namespace IonBytes\Container\Definition\Resolver;
 
 use ReflectionFunctionAbstract;
 
@@ -28,6 +28,6 @@ interface ParameterResolverInterface
      */
     public function resolveParameters(
         ReflectionFunctionAbstract $reflectionMethod = null,
-        array $parameters = []
+        array                      $parameters = []
     ): array;
 }

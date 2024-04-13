@@ -13,44 +13,53 @@ namespace IonBytes\Container;
 
 use Closure;
 use Exception;
-use IonBytes\Container\Exception\CircularDependencyException;
+use InvalidArgumentException;
+use IonBytes\Container\Definition\Binding\Alias;
+use IonBytes\Container\Definition\Binding\Factory;
+use IonBytes\Container\Definition\Binding\Scalar;
+use IonBytes\Container\Definition\Binding\Shared;
+use IonBytes\Container\Definition\Exception\CircularDependencyException;
+use IonBytes\Container\Definition\Resolver\DefinitionResolver;
+use IonBytes\Container\Definition\Resolver\DefinitionResolverInterface;
+use IonBytes\Container\Definition\State;
 use IonBytes\Container\Exception\EntryNotFoundException;
-use IonBytes\Container\Exception\ResolvingException;
-use IonBytes\Container\Resolver\ParameterResolver;
-use ReflectionClass;
-use ReflectionException;
 
 use function array_key_exists;
-use function array_keys;
-use function array_pop;
-use function class_exists;
-use function implode;
-use function interface_exists;
+use function is_object;
+use function is_scalar;
 use function is_string;
-use function sprintf;
+use function property_exists;
 
 class Container implements ContainerInterface
 {
-    /** @var array{concrete: \Closure, shared: bool}[] $bindings */
-    private array $bindings = [];
+    private State $state;
+    private FactoryInterface $factory;
 
-    /** @var array<string, bool> $buildStack */
-    private array $buildStack = [];
+    public function __construct() {
 
-    /** @var array<string, array|object|scalar|null> $instances */
-    private array $instances = [];
+        $this->state = new State();
+        $this->factory = new DefinitionResolver($this->state, $this);
 
-    /**
-     * @inheritDoc
-     */
-    public function has(string $id): bool {
-        return array_key_exists($id, $this->instances) || array_key_exists($id, $this->bindings);
+        $shared = new Alias(self::class);
+
+        $this->state->bindings = [
+            self::class => $this,
+            ContainerInterface::class => $shared,
+            FactoryInterface::class => $shared
+        ];
     }
 
     /**
      * @inheritDoc
      */
-    public function get(string $id): array|object|bool|float|int|string|null {
+    public function has(string $id): bool {
+        return array_key_exists($id, $this->state->instances) || array_key_exists($id, $this->state->bindings);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get(string $id): int|float|string|callable|object {
         try {
             return $this->make($id);
         } catch (Exception $e) {
@@ -65,90 +74,30 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function instance(string $id, object $instance): object {
-        $this->instances[$id] = $instance;
+    public function instance(string $id, int|float|string|callable|object $instance): int|float|string|callable|object {
+        $this->state->instances[$id] = $instance;
         return $instance;
     }
 
     /**
      * @inheritDoc
      */
-    public function resolve(Closure|string $concrete, array $parameters = []): array|object|bool|float|int|string|null {
-        if ($concrete instanceof Closure) {
-            return $concrete($this);
-        }
+    public function bind(string $abstract, int|float|string|callable|object $concrete, bool $shared = false): void {
+        $concrete = match (true) {
+            $concrete instanceof Closure => new Factory($concrete, $shared),
+            is_string($concrete) => new Alias($concrete, $shared),
+            is_scalar($concrete) => new Scalar($concrete),
+            is_object($concrete) => new Shared($concrete),
+            default => throw new InvalidArgumentException(self::class . '::bind() unknown binding type.')
+        };
 
-        try {
-            if (!(class_exists($concrete) || interface_exists($concrete))) {
-                throw new ReflectionException("Class \"$concrete\" does not exist.");
-            }
-
-            $reflection = new ReflectionClass($concrete);
-        } catch (ReflectionException $e) {
-            throw new ResolvingException("The target [$concrete] is not exists.", 0, $e);
-        }
-
-        if (!$reflection->isInstantiable()) {
-            throw new ResolvingException(
-                sprintf(
-                    'The target [%s] is not instantiable%s.',
-                    $concrete,
-                    !empty($this->buildStack)
-                        ? ' while building [' . implode(',', array_keys($this->buildStack)) . ']'
-                        : ''
-                )
-            );
-        }
-
-        if (isset($this->buildStack[$concrete])) {
-            throw new CircularDependencyException(
-                "Circular dependency detected while trying to resolve entry [$concrete]."
-            );
-        }
-
-        $this->buildStack[$concrete] = true;
-
-        try {
-            $constructor = $reflection->getConstructor();
-            if ($constructor !== null) {
-                $resolver = new ParameterResolver($this);
-                $instances = $resolver->resolveParameters($constructor, $parameters);
-
-                return $reflection->newInstanceArgs($instances);
-            }
-
-            return $reflection->newInstanceWithoutConstructor();
-        } finally {
-            array_pop($this->buildStack);
-        }
+        $this->state->bindings[$abstract] = $concrete;
     }
 
     /**
      * @inheritDoc
      */
-    public function bind(string $abstract, string|Closure|null $concrete, bool $shared = false): void {
-        if (!$concrete instanceof Closure) {
-            if ($concrete === null) {
-                $concrete = $abstract;
-            }
-
-            $concrete = $this->getConcreteFactory($abstract, $concrete);
-        }
-
-        $this->bindings[$abstract] = [
-            'concrete' => $concrete,
-            'shared' => $shared
-        ];
-
-        if ($shared) {
-            $this->instances[$abstract] = $concrete;
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function shared(string $abstract, string|Closure|null $concrete): void {
+    public function shared(string $abstract, int|float|string|callable|object $concrete): void {
         $this->bind($abstract, $concrete, true);
     }
 
@@ -156,72 +105,23 @@ class Container implements ContainerInterface
      * @inheritDoc
      */
     public function isShared(string $abstract): bool {
-        return isset($this->services[$abstract]) && $this->bindings[$abstract]['shared'] === true;
+        if (array_key_exists($abstract, $this->state->instances)) {
+            return true;
+        }
+
+        if (array_key_exists($abstract, $this->state->bindings)) {
+            if (property_exists($this->state->bindings[$abstract], 'shared')) {
+                return (bool) $this->state->bindings[$abstract]->shared;
+            }
+        }
+
+        return false;
     }
 
     /**
      * @inheritDoc
      */
-    public function make(Closure|string $abstract, array $parameters = []): array|object|bool|float|int|string|null {
-        if (isset($this->instances[$abstract])) {
-            return $this->instances[$abstract];
-        }
-
-        $concrete = $this->getConcrete($abstract);
-
-        $instance = $abstract === $concrete || $concrete instanceof Closure
-            ? $this->resolve($concrete)
-            : $this->make($concrete, $parameters);
-
-        if (is_string($abstract) && $this->isShared($abstract)) {
-            $this->instances[$abstract] = $instance;
-        }
-
-        return $instance;
-    }
-
-    /**
-     * Gets the concrete.
-     *
-     * @param \Closure|string $abstract
-     *  The alias.
-     *
-     * @return \Closure|string
-     *  Returns concrete factory if found, otherwise returns $abstract.
-     */
-    protected function getConcrete(Closure|string $abstract): Closure|string {
-        if (isset($this->bindings[$abstract])) {
-            return $this->bindings[$abstract]['concrete'];
-        }
-
-        return $abstract;
-    }
-
-    /**
-     * Gets concrete factory.
-     *
-     * @param string $abstract
-     *  The alias.
-     * @param \Closure|class-string|string $concrete
-     *  The binding.
-     *
-     * @return Closure(ContainerInterface, array=):(array|null|object|scalar)
-     *  Returns the factory.
-     */
-    private function getConcreteFactory(string $abstract, string|Closure $concrete): Closure {
-        return function (
-            ContainerInterface $container,
-            array              $parameters = []
-        ) use (
-            $abstract,
-            $concrete
-        ): array|object|bool|float|int|string|null {
-            if ($abstract === $concrete) {
-                return $container->resolve($concrete);
-            }
-
-            /** @var array<string, array|object|scalar|null> $parameters */
-            return $container->make($concrete, $parameters);
-        };
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object {
+        return $this->factory->make($abstract, $parameters);
     }
 }

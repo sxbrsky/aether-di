@@ -9,8 +9,11 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Exception;
+namespace IonBytes\Container\Definition;
 
-class CircularDependencyException extends ContainerException
+/**
+ * @property-read int|float|string|callable|object $value
+ */
+interface Definition
 {
 }

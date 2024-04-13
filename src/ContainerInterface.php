@@ -11,7 +11,6 @@
 
 namespace IonBytes\Container;
 
-use Closure;
 use Psr\Container\ContainerInterface as BaseContainerInterface;
 
 interface ContainerInterface extends BaseContainerInterface, FactoryInterface
@@ -22,65 +21,55 @@ interface ContainerInterface extends BaseContainerInterface, FactoryInterface
      * @param string|class-string<T> $id
      *  The unique identifier for the entry.
      *
-     * @return ($id is class-string ? T : array|object|scalar|null)
+     * @return ($id is class-string ? T : int|float|string|callable|object)
      *  The retrieved service.
      *
      * @throws \Psr\Container\NotFoundExceptionInterface
      *
      * @template T of object
      */
-    public function get(string $id): array|object|bool|float|int|string|null;
+    public function get(string $id): int|float|string|callable|object;
 
     /**
      * Registers an instance as shared in the container.
      *
      * @param string $id
      *  The unique identifier for the entry.
-     * @param object $instance
+     * @param int|float|string|callable|object $instance
      *  The instance to register.
      *
-     * @return object
+     * @return int|float|string|callable|object
      *  Returns registered instance.
      */
-    public function instance(string $id, object $instance): object;
-
-    /**
-     * Resolves given concrete.
-     *
-     * @param \Closure|string $concrete
-     *  The concrete service to resolve.
-     * @param array<string, array|object|scalar|null> $parameters
-     *   Parameters to construct a new class.
-     *
-     * @return array|object|scalar|null
-     */
-    public function resolve(Closure|string $concrete, array $parameters = []): array|object|bool|float|int|string|null;
+    public function instance(string $id, int|float|string|callable|object $instance): int|float|string|callable|object;
 
     /**
      * Binds a given concrete with the container.
      *
      * @param class-string|string $abstract
      *  The alias.
-     * @param \Closure|null|string $concrete
+     * @param int|float|string|callable|object $concrete
      *  The binding.
      * @param bool $shared
      *  Sets a shared binding.
      *
      * @return void
      */
-    public function bind(string $abstract, Closure|null|string $concrete, bool $shared = false): void;
+    public function bind(string $abstract, int|float|string|callable|object $concrete, bool $shared = false): void;
 
     /**
      * Binds a given concrete with the container as shared instance.
      *
      * @param class-string|string $abstract
      *  The alias.
-     * @param \Closure|null|string $concrete
+     * @param int|float|string|callable|object $concrete
      *  The binding.
      *
      * @return void
+     *
+     * @throws \InvalidArgumentException
      */
-    public function shared(string $abstract, Closure|null|string $concrete): void;
+    public function shared(string $abstract, int|float|string|callable|object $concrete): void;
 
     /**
      * Checks if a given concrete is shared.
