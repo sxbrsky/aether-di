@@ -24,6 +24,6 @@ class ContainerBench extends AbstractBenchCase
     #[Assert('mode(variant.time.avg) < 5ms')]
     #[Assert('mode(variant.mem.real) < 10mb')]
     public function benchResolvePerformance(): void {
-        $this->container->resolve(FooBar::class);
+        $this->container->make(FooBar::class);
     }
 }
