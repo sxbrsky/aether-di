@@ -9,8 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Exception;
+namespace IonBytes\Container\Definition\Binding;
 
-class DependencyException extends ContainerException
+use IonBytes\Container\Definition\Definition;
+
+final readonly class Scalar implements Definition
 {
+    public function __construct(
+        public int|float|string|bool $value
+    ) {
+    }
 }

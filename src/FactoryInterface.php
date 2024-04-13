@@ -11,24 +11,22 @@
 
 namespace IonBytes\Container;
 
-use Closure;
-
 interface FactoryInterface
 {
     /**
      * Initializes a new instance of requested class using binding and set of parameters.
      *
-     * @param \Closure|class-string<T>|string $abstract
+     * @param class-string<T>|string $abstract
      *  The unique identifier for the entry.
      * @param array<string, array|object|scalar|null> $parameters
      *  Parameters to construct a new class.
      *
-     * @return ($abstract is class-string ? T : array|object|scalar|null)
+     * @return ($abstract is class-string ? T : int|float|string|callable|object)
      *
-     * @throws \IonBytes\Container\Exception\CircularDependencyException
+     * @throws \IonBytes\Container\Definition\Exception\CircularDependencyException
      * @throws \IonBytes\Container\Exception\EntryNotFoundException
      *
      * @template T of object
      */
-    public function make(Closure|string $abstract, array $parameters = []): array|object|bool|float|int|string|null;
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object;
 }

@@ -9,20 +9,18 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Resolver;
+namespace IonBytes\Container\Definition\Resolver;
 
 use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Exception\DependencyException;
+use IonBytes\Container\Definition\Exception\DependencyException;
 use ReflectionFunctionAbstract;
 
 use function array_key_exists;
 
 final class ParameterResolver implements ParameterResolverInterface
 {
-    private array $with = [];
-
     public function __construct(
-        private ContainerInterface $container
+        private readonly ContainerInterface $container
     ) {
     }
 
@@ -31,23 +29,25 @@ final class ParameterResolver implements ParameterResolverInterface
      */
     public function resolveParameters(
         ReflectionFunctionAbstract $reflectionMethod = null,
-        array $parameters = []
+        array                      $parameters = []
     ): array {
         if ($reflectionMethod === null) {
             return [];
         }
+
+        $arguments = [];
 
         foreach ($reflectionMethod->getParameters() as $parameter) {
             /** @var ?\ReflectionNamedType $type */
             $type = $parameter->getType();
 
             if (array_key_exists($parameter->getName(), $parameters)) {
-                $this->with[] = $parameters[$parameter->getName()];
+                $arguments[] = $parameters[$parameter->getName()];
             } elseif ($type !== null && !$type->isBuiltin()) {
-                $this->with[] = $this->container->make($type->getName(), $parameters);
+                $arguments[] = $this->container->make($type->getName(), $parameters);
             } else {
                 if ($parameter->isDefaultValueAvailable() || $parameter->isOptional()) {
-                    $this->with[] = $parameter->getDefaultValue();
+                    $arguments[] = $parameter->getDefaultValue();
                     continue;
                 }
 
@@ -57,6 +57,6 @@ final class ParameterResolver implements ParameterResolverInterface
             }
         }
 
-        return $this->with;
+        return $arguments;
     }
 }

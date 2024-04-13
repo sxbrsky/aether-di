@@ -9,12 +9,13 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Tests\Unit\Resolver;
+namespace IonBytes\Container\Tests\Unit\Definition\Resolver;
 
 use IonBytes\Container\Container;
 use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Exception\DependencyException;
-use IonBytes\Container\Resolver\ParameterResolver;
+use IonBytes\Container\Definition\Exception\DependencyException;
+use IonBytes\Container\Definition\Resolver\ParameterResolver;
+use IonBytes\Container\Definition\Resolver\ParameterResolverInterface;
 use IonBytes\Container\Tests\Unit\Fixtures\ClassWithDefaultValue;
 use IonBytes\Container\Tests\Unit\Fixtures\ClassWithDependency;
 use IonBytes\Container\Tests\Unit\Fixtures\ExtendedSampleClass;
@@ -22,23 +23,26 @@ use IonBytes\Container\Tests\Unit\Fixtures\SampleClass;
 use IonBytes\Container\Tests\Unit\Fixtures\TypedClass;
 use IonBytes\Container\Tests\Unit\Fixtures\UntypedClass;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
 #[CoversClass(ParameterResolver::class)]
-#[CoversClass(Container::class)]
 class ParameterResolverTest extends TestCase
 {
-    /** @psalm-suppress PropertyNotSetInConstructor */
-    private ContainerInterface $container;
+    private MockObject|ContainerInterface $container;
+    private ParameterResolverInterface $resolver;
 
     public function setUp(): void {
-        $this->container = new Container();
+        $this->container = $this->createMock(
+            Container::class
+        );
+
+        $this->resolver = new ParameterResolver($this->container);
     }
 
     public function testReturnsEmptyArrayIfReflectionMethodIsNull(): void {
-        $resolver = new ParameterResolver($this->container);
-        self::assertSame([], $resolver->resolveParameters());
+        self::assertSame([], $this->resolver->resolveParameters());
     }
 
     public function testThrowsExceptionIfParameterIsNotDefinedOrGuessable(): void {
@@ -47,15 +51,12 @@ class ParameterResolverTest extends TestCase
 
         $reflection = new ReflectionClass(ClassWithDependency::class);
 
-        $resolver = new ParameterResolver($this->container);
-        $resolver->resolveParameters($reflection->getConstructor());
+        $this->resolver->resolveParameters($reflection->getConstructor());
     }
 
     public function testGetParameterDefaultValue(): void {
         $reflection = new ReflectionClass(ClassWithDefaultValue::class);
-
-        $resolver = new ParameterResolver($this->container);
-        $parameters = $resolver->resolveParameters($reflection->getConstructor());
+        $parameters = $this->resolver->resolveParameters($reflection->getConstructor());
 
         self::assertSame(
             'default',
@@ -65,9 +66,7 @@ class ParameterResolverTest extends TestCase
 
     public function testGetParameterFromPassedParameters(): void {
         $reflection = new ReflectionClass(ExtendedSampleClass::class);
-
-        $resolver = new ParameterResolver($this->container);
-        $parameters = $resolver->resolveParameters(
+        $parameters = $this->resolver->resolveParameters(
             $reflection->getConstructor(),
             ['name' => 'john']
         );
@@ -78,11 +77,13 @@ class ParameterResolverTest extends TestCase
     }
 
     public function testGetParameterFromContainer(): void {
-        $this->container->bind(SampleClass::class, SampleClass::class);
-        $reflection = new ReflectionClass(TypedClass::class);
+        $this->container->expects(self::once())
+            ->method('make')
+            ->with(SampleClass::class, [])
+            ->willReturn(new SampleClass());
 
-        $resolver = new ParameterResolver($this->container);
-        $parameters = $resolver->resolveParameters($reflection->getConstructor());
+        $reflection = new ReflectionClass(TypedClass::class);
+        $parameters = $this->resolver->resolveParameters($reflection->getConstructor());
 
         self::assertCount(1, $parameters);
         self::assertInstanceOf(SampleClass::class, $parameters[0]);

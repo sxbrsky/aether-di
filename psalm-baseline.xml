@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="dev-master@ef3b018e89c4ffc157332c13e2ebf9cf22320d17">
   <file src="src/Container.php">
-    <MixedReturnStatement>
-      <code><![CDATA[$concrete($this)]]></code>
-    </MixedReturnStatement>
+    <InvalidPropertyAssignmentValue>
+      <code><![CDATA[[
+            self::class => $this,
+            ContainerInterface::class => $shared,
+            FactoryInterface::class => $shared
+        ]]]></code>
+    </InvalidPropertyAssignmentValue>
+    <NoInterfaceProperties>
+      <code><![CDATA[$this->state->bindings[$abstract]->shared]]></code>
+    </NoInterfaceProperties>
   </file>
-  <file src="tests/unit/ContainerTest.php">
-    <MixedArgument>
-      <code><![CDATA[Shared::class]]></code>
-    </MixedArgument>
-    <MixedOperand>
-      <code><![CDATA[Shared::class]]></code>
-    </MixedOperand>
-    <UndefinedClass>
-      <code><![CDATA[Shared]]></code>
-      <code><![CDATA[Shared]]></code>
-    </UndefinedClass>
+  <file src="src/Definition/Resolver/DefinitionResolver.php">
+    <MixedReturnStatement>
+      <code><![CDATA[$concrete->value]]></code>
+      <code><![CDATA[($concrete->value)($this->container)]]></code>
+    </MixedReturnStatement>
+    <NoInterfaceProperties>
+      <code><![CDATA[$concrete->value]]></code>
+    </NoInterfaceProperties>
+  </file>
+  <file src="src/Definition/Resolver/ParameterResolver.php">
+    <MixedAssignment>
+      <code><![CDATA[$arguments[]]]></code>
+    </MixedAssignment>
   </file>
 </files>

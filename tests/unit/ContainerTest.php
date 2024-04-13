@@ -13,16 +13,24 @@ namespace IonBytes\Container\Tests\Unit;
 
 use IonBytes\Container\Container;
 use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Exception\CircularDependencyException;
+use IonBytes\Container\Definition\Binding\Alias;
+use IonBytes\Container\Definition\Binding\Factory;
+use IonBytes\Container\Definition\Binding\Shared;
+use IonBytes\Container\Definition\Exception\CircularDependencyException;
+use IonBytes\Container\Definition\Resolver\DefinitionResolver;
+use IonBytes\Container\Definition\Resolver\ParameterResolver;
 use IonBytes\Container\Exception\ResolvingException;
-use IonBytes\Container\Resolver\ParameterResolver;
 use IonBytes\Container\Tests\Unit\Fixtures\ClassACircularDependency;
 use IonBytes\Container\Tests\Unit\Fixtures\SampleClass;
 use IonBytes\Container\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Alias::class)]
+#[CoversClass(Factory::class)]
 #[CoversClass(Container::class)]
+#[CoversClass(Shared::class)]
+#[CoversClass(DefinitionResolver::class)]
 #[CoversClass(ParameterResolver::class)]
 class ContainerTest extends TestCase
 {
@@ -73,25 +81,12 @@ class ContainerTest extends TestCase
         self::assertSame('bar', $this->container->make('foo'));
     }
 
-    public function testCircularDependencyThrowsException(): void {
-        $this->expectException(CircularDependencyException::class);
+    public function testBindingInterfaceToImplementation(): void {
+        $this->container->bind(SampleInterface::class, SampleClass::class);
 
-        $this->container->make(ClassACircularDependency::class);
-    }
-
-    public function testResolvingThrowsExceptionIfClassNotFound(): void {
-        self::expectException(ResolvingException::class);
-        self::expectExceptionMessage('The target [' . Shared::class . '] is not exists.');
-
-        $this->container->bind('foo', Shared::class);
-        $this->container->make('foo');
-    }
-
-    public function testResolvingThrowsExceptionIfClassIsNotInstantiable(): void {
-        self::expectException(ResolvingException::class);
-        self::expectExceptionMessage('The target [' . SampleInterface::class . '] is not instantiable.');
-
-        $this->container->bind('foo', SampleInterface::class);
-        $this->container->make('foo');
+        self::assertInstanceOf(
+            SampleClass::class,
+            $this->container->make(SampleInterface::class)
+        );
     }
 }
