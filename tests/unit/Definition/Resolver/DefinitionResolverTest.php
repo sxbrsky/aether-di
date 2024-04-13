@@ -37,8 +37,7 @@ class DefinitionResolverTest extends TestCase
     private State $state;
     private DefinitionResolver $resolver;
 
-    public function setUp(): void
-    {
+    public function setUp(): void {
         $this->state = new State();
         $this->resolver = new DefinitionResolver($this->state, new Container());
     }
@@ -66,7 +65,7 @@ class DefinitionResolverTest extends TestCase
 
     public function testResolverThrowsExceptionIfClassNotFound(): void {
         self::expectException(EntryNotFoundException::class);
-        self::expectExceptionMessage("Undefined entry `" . Shared::class . "`");
+        self::expectExceptionMessage('Undefined entry `' . Shared::class . '`');
 
         $this->resolver->make(Shared::class);
     }

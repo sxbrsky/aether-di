@@ -89,5 +89,4 @@ class ContainerTest extends TestCase
             $this->container->make(SampleInterface::class)
         );
     }
-
 }
