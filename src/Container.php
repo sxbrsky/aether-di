@@ -23,6 +23,7 @@ use IonBytes\Container\Definition\Resolver\DefinitionResolver;
 use IonBytes\Container\Definition\Resolver\DefinitionResolverInterface;
 use IonBytes\Container\Definition\State;
 use IonBytes\Container\Exception\EntryNotFoundException;
+use IonBytes\Container\Invoker\Invoker;
 
 use function array_key_exists;
 use function is_object;
@@ -123,5 +124,16 @@ class Container implements ContainerInterface
      */
     public function make(string $abstract, array $parameters = []): int|float|string|callable|object {
         return $this->factory->make($abstract, $parameters);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function call(callable|array|string $callable, array $parameters = []): mixed {
+        return $this->getInvoker()->call($callable, $parameters);
+    }
+
+    private function getInvoker(): InvokerInterface {
+        return new Invoker($this);
     }
 }
