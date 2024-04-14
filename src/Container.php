@@ -18,6 +18,7 @@ use IonBytes\Container\Definition\Binding\Alias;
 use IonBytes\Container\Definition\Binding\Factory;
 use IonBytes\Container\Definition\Binding\Scalar;
 use IonBytes\Container\Definition\Binding\Shared;
+use IonBytes\Container\Definition\Binding\WeakReference;
 use IonBytes\Container\Definition\Exception\CircularDependencyException;
 use IonBytes\Container\Definition\Resolver\DefinitionResolver;
 use IonBytes\Container\Definition\Resolver\DefinitionResolverInterface;
@@ -85,6 +86,7 @@ class Container implements ContainerInterface
     public function bind(string $abstract, int|float|string|callable|object $concrete, bool $shared = false): void {
         $concrete = match (true) {
             $concrete instanceof Closure => new Factory($concrete, $shared),
+            $concrete instanceof \WeakReference => new WeakReference($concrete),
             is_string($concrete) => new Alias($concrete, $shared),
             is_scalar($concrete) => new Scalar($concrete),
             is_object($concrete) => new Shared($concrete),

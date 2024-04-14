@@ -14,6 +14,7 @@ namespace IonBytes\Container\Definition\Resolver;
 use IonBytes\Container\ContainerInterface;
 use IonBytes\Container\Definition\Binding\Alias;
 use IonBytes\Container\Definition\Binding\Factory as FactoryBinding;
+use IonBytes\Container\Definition\Binding\WeakReference;
 use IonBytes\Container\Definition\Exception\CircularDependencyException;
 use IonBytes\Container\Definition\State;
 use IonBytes\Container\Exception\ContainerException;
@@ -75,6 +76,10 @@ final class DefinitionResolver implements FactoryInterface
 
         if ($concrete instanceof FactoryBinding) {
             return ($concrete->value)($this->container);
+        }
+
+        if ($concrete instanceof WeakReference) {
+            return $concrete->value->get();
         }
 
         return $concrete->value;
