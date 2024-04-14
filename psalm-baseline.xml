@@ -15,7 +15,7 @@
   <file src="src/Definition/Resolver/DefinitionResolver.php">
     <MixedReturnStatement>
       <code><![CDATA[$concrete->value]]></code>
-      <code><![CDATA[($concrete->value)($this->container)]]></code>
+      <code><![CDATA[$this->container->call($concrete->value, $parameters)]]></code>
     </MixedReturnStatement>
     <NoInterfaceProperties>
       <code><![CDATA[$concrete->value]]></code>
