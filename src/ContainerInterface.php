@@ -13,7 +13,7 @@ namespace IonBytes\Container;
 
 use Psr\Container\ContainerInterface as BaseContainerInterface;
 
-interface ContainerInterface extends BaseContainerInterface, FactoryInterface
+interface ContainerInterface extends BaseContainerInterface, FactoryInterface, InvokerInterface
 {
     /**
      * Returns an entry of the container by its id.
