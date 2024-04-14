@@ -75,7 +75,7 @@ final class DefinitionResolver implements FactoryInterface
         }
 
         if ($concrete instanceof FactoryBinding) {
-            return ($concrete->value)($this->container);
+            return $this->container->call($concrete->value, $parameters);
         }
 
         if ($concrete instanceof WeakReference) {
