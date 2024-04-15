@@ -11,12 +11,20 @@
 
 namespace IonBytes\Container\Invoker;
 
+use Closure;
 use IonBytes\Container\ContainerInterface;
 use IonBytes\Container\Definition\Resolver\ParameterResolver;
 use IonBytes\Container\Definition\Resolver\ParameterResolverInterface;
 use IonBytes\Container\Exception\ContainerException;
 use IonBytes\Container\Exception\RuntimeException;
 use IonBytes\Container\InvokerInterface;
+use ReflectionException;
+use ReflectionFunction;
+use ReflectionMethod;
+
+use function is_array;
+use function is_callable;
+use function is_string;
 
 final class Invoker implements InvokerInterface
 {
@@ -32,7 +40,7 @@ final class Invoker implements InvokerInterface
      * @inheritDoc
      */
     public function call(callable|array|string $callable, array $parameters = []): mixed {
-        if (\is_array($callable)) {
+        if (is_array($callable)) {
             if (!isset($callable[1])) {
                 $callable[1] = '__invoke';
             }
@@ -40,26 +48,26 @@ final class Invoker implements InvokerInterface
             [$class, $method] = $callable;
 
             try {
-                if (\is_string($class)) {
+                if (is_string($class)) {
                     $class = $this->container->get($class);
                 }
 
-                $reflection = new \ReflectionMethod($class, $method);
-            } catch (\ReflectionException $e) {
+                $reflection = new ReflectionMethod($class, $method);
+            } catch (ReflectionException $e) {
                 throw new ContainerException($e->getMessage(), $e->getCode(), $e);
             }
 
             return $reflection->invokeArgs($class, $this->resolver->resolveParameters($reflection, $parameters));
         }
 
-        if (\is_string($callable) && \is_callable($callable)) {
+        if (is_string($callable) && is_callable($callable)) {
             $callable = $callable(...);
         }
 
-        if ($callable instanceof \Closure) {
+        if ($callable instanceof Closure) {
             try {
-                $reflection = new \ReflectionFunction($callable);
-            } catch (\ReflectionException $e) {
+                $reflection = new ReflectionFunction($callable);
+            } catch (ReflectionException $e) {
                 throw new ContainerException($e->getMessage(), $e->getCode(), $e);
             }
 
