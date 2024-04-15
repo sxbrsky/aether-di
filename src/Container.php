@@ -45,7 +45,7 @@ class Container implements ContainerInterface
         $shared = new Alias(self::class);
 
         $this->state->bindings = [
-            self::class => $this,
+            self::class => new WeakReference(\WeakReference::create($this)),
             ContainerInterface::class => $shared,
             FactoryInterface::class => $shared,
             InvokerInterface::class => $shared
