@@ -47,7 +47,8 @@ class Container implements ContainerInterface
         $this->state->bindings = [
             self::class => $this,
             ContainerInterface::class => $shared,
-            FactoryInterface::class => $shared
+            FactoryInterface::class => $shared,
+            InvokerInterface::class => $shared
         ];
     }
 
