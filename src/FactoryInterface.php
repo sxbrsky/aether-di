@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean;
+namespace Bean;
 
 interface FactoryInterface
 {
@@ -23,8 +23,8 @@ interface FactoryInterface
      *
      * @return ($abstract is class-string ? T : int|float|string|callable|object)
      *
-     * @throws \IonBytes\Bean\Definition\Exception\CircularDependencyException
-     * @throws \IonBytes\Bean\Exception\EntryNotFoundException
+     * @throws \Bean\Definition\Exception\CircularDependencyException
+     * @throws \Bean\Exception\EntryNotFoundException
      *
      * @template T of object
      */

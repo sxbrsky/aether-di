@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Definition\Resolver;
+namespace Bean\Definition\Resolver;
 
-use IonBytes\Bean\ContainerInterface;
-use IonBytes\Bean\Definition\Exception\DependencyException;
+use Bean\ContainerInterface;
+use Bean\Definition\Exception\DependencyException;
 use ReflectionFunctionAbstract;
 
 use function array_key_exists;

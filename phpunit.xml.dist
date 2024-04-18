@@ -16,7 +16,7 @@
     <coverage/>
 
     <testsuites>
-        <testsuite name="IonBytes Container Test Suite">
+        <testsuite name="Bean Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

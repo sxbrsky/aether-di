@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Definition\Resolver;
+namespace Bean\Definition\Resolver;
 
-use IonBytes\Bean\ContainerInterface;
-use IonBytes\Bean\Definition\Binding\Alias;
-use IonBytes\Bean\Definition\Binding\Factory as FactoryBinding;
-use IonBytes\Bean\Definition\Binding\WeakReference;
-use IonBytes\Bean\Definition\Exception\CircularDependencyException;
-use IonBytes\Bean\Definition\State;
-use IonBytes\Bean\Exception\ContainerException;
-use IonBytes\Bean\Exception\EntryNotFoundException;
-use IonBytes\Bean\FactoryInterface;
+use Bean\ContainerInterface;
+use Bean\Definition\Binding\Alias;
+use Bean\Definition\Binding\Factory as FactoryBinding;
+use Bean\Definition\Binding\WeakReference;
+use Bean\Definition\Exception\CircularDependencyException;
+use Bean\Definition\State;
+use Bean\Exception\ContainerException;
+use Bean\Exception\EntryNotFoundException;
+use Bean\FactoryInterface;
 use ReflectionClass;
 
 use function array_key_exists;
@@ -38,7 +38,7 @@ final class DefinitionResolver implements FactoryInterface
     /**
      * The parameter resolver.
      *
-     * @var \IonBytes\Bean\Definition\Resolver\ParameterResolverInterface $parameterResolver
+     * @var \Bean\Definition\Resolver\ParameterResolverInterface $parameterResolver
      */
     private ParameterResolverInterface $parameterResolver;
 

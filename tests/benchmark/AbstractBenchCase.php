@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Tests\Benchmark;
+namespace Bean\Tests\Benchmark;
 
-use IonBytes\Bean\Container;
-use IonBytes\Bean\ContainerInterface;
+use Bean\Container;
+use Bean\ContainerInterface;
 
 abstract class AbstractBenchCase
 {

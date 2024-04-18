@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Invoker;
+namespace Bean\Invoker;
 
 use Closure;
-use IonBytes\Bean\ContainerInterface;
-use IonBytes\Bean\Definition\Resolver\ParameterResolver;
-use IonBytes\Bean\Definition\Resolver\ParameterResolverInterface;
-use IonBytes\Bean\Exception\ContainerException;
-use IonBytes\Bean\Exception\RuntimeException;
-use IonBytes\Bean\InvokerInterface;
+use Bean\ContainerInterface;
+use Bean\Definition\Resolver\ParameterResolver;
+use Bean\Definition\Resolver\ParameterResolverInterface;
+use Bean\Exception\ContainerException;
+use Bean\Exception\RuntimeException;
+use Bean\InvokerInterface;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;

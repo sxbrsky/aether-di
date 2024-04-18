@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Tests\Unit\Definition\Resolver;
+namespace Bean\Tests\Unit\Definition\Resolver;
 
-use IonBytes\Bean\Container;
-use IonBytes\Bean\ContainerInterface;
-use IonBytes\Bean\Definition\Exception\DependencyException;
-use IonBytes\Bean\Definition\Resolver\ParameterResolver;
-use IonBytes\Bean\Definition\Resolver\ParameterResolverInterface;
-use IonBytes\Bean\Tests\Unit\Fixtures\ClassWithDefaultValue;
-use IonBytes\Bean\Tests\Unit\Fixtures\ClassWithDependency;
-use IonBytes\Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\SampleClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\TypedClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\UntypedClass;
+use Bean\Container;
+use Bean\ContainerInterface;
+use Bean\Definition\Exception\DependencyException;
+use Bean\Definition\Resolver\ParameterResolver;
+use Bean\Definition\Resolver\ParameterResolverInterface;
+use Bean\Tests\Unit\Fixtures\ClassWithDefaultValue;
+use Bean\Tests\Unit\Fixtures\ClassWithDependency;
+use Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
+use Bean\Tests\Unit\Fixtures\SampleClass;
+use Bean\Tests\Unit\Fixtures\TypedClass;
+use Bean\Tests\Unit\Fixtures\UntypedClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

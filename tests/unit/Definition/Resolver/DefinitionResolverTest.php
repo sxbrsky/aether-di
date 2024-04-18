@@ -1,28 +1,28 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Tests\Unit\Definition\Resolver;
+namespace Bean\Tests\Unit\Definition\Resolver;
 
-use IonBytes\Bean\Container;
-use IonBytes\Bean\Definition\Binding\Alias;
-use IonBytes\Bean\Definition\Binding\Scalar;
-use IonBytes\Bean\Definition\Exception\CircularDependencyException;
-use IonBytes\Bean\Definition\Resolver\DefinitionResolver;
-use IonBytes\Bean\Definition\Resolver\ParameterResolver;
-use IonBytes\Bean\Definition\State;
-use IonBytes\Bean\Exception\ContainerException;
-use IonBytes\Bean\Exception\EntryNotFoundException;
-use IonBytes\Bean\Tests\Unit\Fixtures\ClassACircularDependency;
-use IonBytes\Bean\Tests\Unit\Fixtures\SampleClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\SampleInterface;
+use Bean\Container;
+use Bean\Definition\Binding\Alias;
+use Bean\Definition\Binding\Scalar;
+use Bean\Definition\Exception\CircularDependencyException;
+use Bean\Definition\Resolver\DefinitionResolver;
+use Bean\Definition\Resolver\ParameterResolver;
+use Bean\Definition\State;
+use Bean\Exception\ContainerException;
+use Bean\Exception\EntryNotFoundException;
+use Bean\Tests\Unit\Fixtures\ClassACircularDependency;
+use Bean\Tests\Unit\Fixtures\SampleClass;
+use Bean\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

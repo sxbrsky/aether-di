@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Tests\Unit\Invoker;
+namespace Bean\Tests\Unit\Invoker;
 
-use IonBytes\Bean\Container;
-use IonBytes\Bean\ContainerInterface;
-use IonBytes\Bean\Definition\Binding\Alias;
-use IonBytes\Bean\Definition\Binding\Shared;
-use IonBytes\Bean\Definition\Resolver\DefinitionResolver;
-use IonBytes\Bean\Definition\Resolver\ParameterResolver;
-use IonBytes\Bean\Exception\RuntimeException;
-use IonBytes\Bean\Invoker\Invoker;
-use IonBytes\Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\InvokableClass;
-use IonBytes\Bean\Tests\Unit\Fixtures\SampleClass;
+use Bean\Container;
+use Bean\ContainerInterface;
+use Bean\Definition\Binding\Alias;
+use Bean\Definition\Binding\Shared;
+use Bean\Definition\Resolver\DefinitionResolver;
+use Bean\Definition\Resolver\ParameterResolver;
+use Bean\Exception\RuntimeException;
+use Bean\Invoker\Invoker;
+use Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
+use Bean\Tests\Unit\Fixtures\InvokableClass;
+use Bean\Tests\Unit\Fixtures\SampleClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -76,7 +76,7 @@ class InvokerTest extends TestCase
     public function testInvalidCallableThrowsException(): void {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
-            'Method IonBytes\Bean\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'
+            'Method Bean\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'
         );
 
         $this->container->call([SampleClass::class]);

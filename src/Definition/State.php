@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean\Definition;
+namespace Bean\Definition;
 
 final class State
 {
     /**
      * The bindings.
      *
-     * @var array<string, \IonBytes\Bean\Definition\Definition> $bindings
+     * @var array<string, \Bean\Definition\Definition> $bindings
      */
     public array $bindings = [];
 

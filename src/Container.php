@@ -1,30 +1,30 @@
 <?php
 
 /*
- * This file is part of the ionbytes/bean.
+ * This file is part of the nuldark/bean.
  *
- * Copyright (C) 2024 IonBytes Development Team
+ * Copyright (C) 2024 Dominik Szamburski
  *
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Bean;
+namespace Bean;
 
 use Closure;
 use Exception;
 use InvalidArgumentException;
-use IonBytes\Bean\Definition\Binding\Alias;
-use IonBytes\Bean\Definition\Binding\Factory;
-use IonBytes\Bean\Definition\Binding\Scalar;
-use IonBytes\Bean\Definition\Binding\Shared;
-use IonBytes\Bean\Definition\Binding\WeakReference;
-use IonBytes\Bean\Definition\Exception\CircularDependencyException;
-use IonBytes\Bean\Definition\Resolver\DefinitionResolver;
-use IonBytes\Bean\Definition\Resolver\DefinitionResolverInterface;
-use IonBytes\Bean\Definition\State;
-use IonBytes\Bean\Exception\EntryNotFoundException;
-use IonBytes\Bean\Invoker\Invoker;
+use Bean\Definition\Binding\Alias;
+use Bean\Definition\Binding\Factory;
+use Bean\Definition\Binding\Scalar;
+use Bean\Definition\Binding\Shared;
+use Bean\Definition\Binding\WeakReference;
+use Bean\Definition\Exception\CircularDependencyException;
+use Bean\Definition\Resolver\DefinitionResolver;
+use Bean\Definition\Resolver\DefinitionResolverInterface;
+use Bean\Definition\State;
+use Bean\Exception\EntryNotFoundException;
+use Bean\Invoker\Invoker;
 
 use function array_key_exists;
 use function is_object;
