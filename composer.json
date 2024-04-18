@@ -1,6 +1,6 @@
 {
-    "name": "ionbytes/container",
-    "description": "The dependency injection container.",
+    "name": "ionbytes/bean",
+    "description": "A lightweight dependency injection container for PHP.",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -11,8 +11,8 @@
         "container"
     ],
     "support": {
-        "issues": "https://github.com/ionbytes/container/issues",
-        "source": "https://github.com/ionbytes/container"
+        "issues": "https://github.com/ionbytes/bean/issues",
+        "source": "https://github.com/ionbytes/bean"
     },
     "require": {
         "php": ">=8.2",
@@ -31,13 +31,13 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "IonBytes\\Container\\": "src/"
+            "IonBytes\\Bean\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IonBytes\\Container\\Tests\\Unit\\": "tests/unit/",
-            "IonBytes\\Container\\Tests\\Benchmark\\": "tests/benchmark/"
+            "IonBytes\\Bean\\Tests\\Benchmark\\": "tests/benchmark/",
+            "IonBytes\\Bean\\Tests\\Unit\\": "tests/unit/"
         }
     },
     "config": {
@@ -54,9 +54,9 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf -vpw",
+        "phpbench": "phpbench run --report=compressed",
         "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-html coverage",
-        "phpbench": "phpbench run --report=compressed"
+        "test-coverage": "phpunit --colors=always --coverage-html coverage"
     }
 }

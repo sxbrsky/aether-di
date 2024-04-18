@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,14 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Definition;
+namespace IonBytes\Bean\Definition;
 
 final class State
 {
     /**
      * The bindings.
      *
-     * @var array<string, \IonBytes\Container\Definition\Definition> $bindings
+     * @var array<string, \IonBytes\Bean\Definition\Definition> $bindings
      */
     public array $bindings = [];
 

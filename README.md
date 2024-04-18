@@ -1,13 +1,13 @@
-# ionbytes/container
+# ionbytes/bean
 
-[![PHP Version Require](https://poser.pugx.org/ionbytes/container/require/php)](https://packagist.org/packages/ionbytes/container)
-[![Latest Stable Version](https://poser.pugx.org/ionbytes/container/v/stable)](https://packagist.org/packages/ionbytes/container)
-[![tests](https://github.com/ionbytes/container/actions/workflows/tests.yml/badge.svg)](https://github.com/ionbytes/container/actions)
-[![static analysis](https://github.com/ionbytes/container/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/ionbytes/container/actions)
-[![Total Downloads](https://poser.pugx.org/ionbytes/container/downloads)](https://packagist.org/ionbytes/container)
-[![License](https://poser.pugx.org/ionbytes/container/license.svg)](https://packagist.org/packages/ionbytes/container)
+[![PHP Version Require](https://poser.pugx.org/ionbytes/bean/require/php)](https://packagist.org/packages/ionbytes/bean)
+[![Latest Stable Version](https://poser.pugx.org/ionbytes/bean/v/stable)](https://packagist.org/packages/ionbytes/bean)
+[![tests](https://github.com/ionbytes/bean/actions/workflows/tests.yml/badge.svg)](https://github.com/ionbytes/bean/actions)
+[![static analysis](https://github.com/ionbytes/bean/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/ionbytes/bean/actions)
+[![Total Downloads](https://poser.pugx.org/ionbytes/bean/downloads)](https://packagist.org/ionbytes/bean)
+[![License](https://poser.pugx.org/ionbytes/bean/license.svg)](https://packagist.org/packages/ionbytes/bean)
 
-**ionbytes/container** is an open-source implementation of the PHP-FIG PSR-11 standard, which
+**ionbytes/bean** is an open-source implementation of the PHP-FIG PSR-11 standard, which
 defines a common interface for dependency injection containers. Aims to provide a simple and efficient Inversion of Control (IoC) container for PHP applications.
 
 ## Features
@@ -21,12 +21,12 @@ defines a common interface for dependency injection containers. Aims to provide 
 Use the composer to install:
 
 ```bash
-composer require ionbytes/container
+composer require ionbytes/bean
 ```
 
 ## Support
 
-- [Issues](https://github.com/ionbytes/container/issues/)
+- [Issues](https://github.com/ionbytes/bean/issues/)
 
 ## License
 

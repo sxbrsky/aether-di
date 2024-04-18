@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,19 +9,19 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Tests\Unit\Definition\Resolver;
+namespace IonBytes\Bean\Tests\Unit\Definition\Resolver;
 
-use IonBytes\Container\Container;
-use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Definition\Exception\DependencyException;
-use IonBytes\Container\Definition\Resolver\ParameterResolver;
-use IonBytes\Container\Definition\Resolver\ParameterResolverInterface;
-use IonBytes\Container\Tests\Unit\Fixtures\ClassWithDefaultValue;
-use IonBytes\Container\Tests\Unit\Fixtures\ClassWithDependency;
-use IonBytes\Container\Tests\Unit\Fixtures\ExtendedSampleClass;
-use IonBytes\Container\Tests\Unit\Fixtures\SampleClass;
-use IonBytes\Container\Tests\Unit\Fixtures\TypedClass;
-use IonBytes\Container\Tests\Unit\Fixtures\UntypedClass;
+use IonBytes\Bean\Container;
+use IonBytes\Bean\ContainerInterface;
+use IonBytes\Bean\Definition\Exception\DependencyException;
+use IonBytes\Bean\Definition\Resolver\ParameterResolver;
+use IonBytes\Bean\Definition\Resolver\ParameterResolverInterface;
+use IonBytes\Bean\Tests\Unit\Fixtures\ClassWithDefaultValue;
+use IonBytes\Bean\Tests\Unit\Fixtures\ClassWithDependency;
+use IonBytes\Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
+use IonBytes\Bean\Tests\Unit\Fixtures\SampleClass;
+use IonBytes\Bean\Tests\Unit\Fixtures\TypedClass;
+use IonBytes\Bean\Tests\Unit\Fixtures\UntypedClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

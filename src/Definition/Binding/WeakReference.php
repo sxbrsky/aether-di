@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Definition\Binding;
+namespace IonBytes\Bean\Definition\Binding;
 
-use IonBytes\Container\Definition\Definition;
+use IonBytes\Bean\Definition\Definition;
 
 final class WeakReference implements Definition
 {

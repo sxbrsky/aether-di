@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,10 +9,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Definition\Resolver;
+namespace IonBytes\Bean\Definition\Resolver;
 
-use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Definition\Exception\DependencyException;
+use IonBytes\Bean\ContainerInterface;
+use IonBytes\Bean\Definition\Exception\DependencyException;
 use ReflectionFunctionAbstract;
 
 use function array_key_exists;
