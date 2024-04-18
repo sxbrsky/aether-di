@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container;
+namespace IonBytes\Bean;
 
 interface FactoryInterface
 {
@@ -23,8 +23,8 @@ interface FactoryInterface
      *
      * @return ($abstract is class-string ? T : int|float|string|callable|object)
      *
-     * @throws \IonBytes\Container\Definition\Exception\CircularDependencyException
-     * @throws \IonBytes\Container\Exception\EntryNotFoundException
+     * @throws \IonBytes\Bean\Definition\Exception\CircularDependencyException
+     * @throws \IonBytes\Bean\Exception\EntryNotFoundException
      *
      * @template T of object
      */

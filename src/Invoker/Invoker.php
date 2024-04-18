@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,15 +9,15 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Invoker;
+namespace IonBytes\Bean\Invoker;
 
 use Closure;
-use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Definition\Resolver\ParameterResolver;
-use IonBytes\Container\Definition\Resolver\ParameterResolverInterface;
-use IonBytes\Container\Exception\ContainerException;
-use IonBytes\Container\Exception\RuntimeException;
-use IonBytes\Container\InvokerInterface;
+use IonBytes\Bean\ContainerInterface;
+use IonBytes\Bean\Definition\Resolver\ParameterResolver;
+use IonBytes\Bean\Definition\Resolver\ParameterResolverInterface;
+use IonBytes\Bean\Exception\ContainerException;
+use IonBytes\Bean\Exception\RuntimeException;
+use IonBytes\Bean\InvokerInterface;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container;
+namespace IonBytes\Bean;
 
 use Closure;
 use Exception;
 use InvalidArgumentException;
-use IonBytes\Container\Definition\Binding\Alias;
-use IonBytes\Container\Definition\Binding\Factory;
-use IonBytes\Container\Definition\Binding\Scalar;
-use IonBytes\Container\Definition\Binding\Shared;
-use IonBytes\Container\Definition\Binding\WeakReference;
-use IonBytes\Container\Definition\Exception\CircularDependencyException;
-use IonBytes\Container\Definition\Resolver\DefinitionResolver;
-use IonBytes\Container\Definition\Resolver\DefinitionResolverInterface;
-use IonBytes\Container\Definition\State;
-use IonBytes\Container\Exception\EntryNotFoundException;
-use IonBytes\Container\Invoker\Invoker;
+use IonBytes\Bean\Definition\Binding\Alias;
+use IonBytes\Bean\Definition\Binding\Factory;
+use IonBytes\Bean\Definition\Binding\Scalar;
+use IonBytes\Bean\Definition\Binding\Shared;
+use IonBytes\Bean\Definition\Binding\WeakReference;
+use IonBytes\Bean\Definition\Exception\CircularDependencyException;
+use IonBytes\Bean\Definition\Resolver\DefinitionResolver;
+use IonBytes\Bean\Definition\Resolver\DefinitionResolverInterface;
+use IonBytes\Bean\Definition\State;
+use IonBytes\Bean\Exception\EntryNotFoundException;
+use IonBytes\Bean\Invoker\Invoker;
 
 use function array_key_exists;
 use function is_object;

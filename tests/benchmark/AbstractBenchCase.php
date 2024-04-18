@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,10 +9,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Tests\Benchmark;
+namespace IonBytes\Bean\Tests\Benchmark;
 
-use IonBytes\Container\Container;
-use IonBytes\Container\ContainerInterface;
+use IonBytes\Bean\Container;
+use IonBytes\Bean\ContainerInterface;
 
 abstract class AbstractBenchCase
 {

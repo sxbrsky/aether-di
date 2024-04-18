@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,10 +9,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Tests\Benchmark\Cases;
+namespace IonBytes\Bean\Tests\Benchmark\Cases;
 
-use IonBytes\Container\Tests\Benchmark\AbstractBenchCase;
-use IonBytes\Container\Tests\Benchmark\Fixtures\FooBar;
+use IonBytes\Bean\Tests\Benchmark\AbstractBenchCase;
+use IonBytes\Bean\Tests\Benchmark\Fixtures\FooBar;
 use PhpBench\Attributes\AfterMethods;
 use PhpBench\Attributes\Assert;
 use PhpBench\Attributes\BeforeMethods;

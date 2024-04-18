@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ionbytes/container.
+ * This file is part of the ionbytes/bean.
  *
  * Copyright (C) 2024 IonBytes Development Team
  *
@@ -9,17 +9,17 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace IonBytes\Container\Tests\Unit;
+namespace IonBytes\Bean\Tests\Unit;
 
-use IonBytes\Container\Container;
-use IonBytes\Container\ContainerInterface;
-use IonBytes\Container\Definition\Binding\Alias;
-use IonBytes\Container\Definition\Binding\Factory;
-use IonBytes\Container\Definition\Binding\Shared;
-use IonBytes\Container\Definition\Resolver\DefinitionResolver;
-use IonBytes\Container\Definition\Resolver\ParameterResolver;
-use IonBytes\Container\Tests\Unit\Fixtures\SampleClass;
-use IonBytes\Container\Tests\Unit\Fixtures\SampleInterface;
+use IonBytes\Bean\Container;
+use IonBytes\Bean\ContainerInterface;
+use IonBytes\Bean\Definition\Binding\Alias;
+use IonBytes\Bean\Definition\Binding\Factory;
+use IonBytes\Bean\Definition\Binding\Shared;
+use IonBytes\Bean\Definition\Resolver\DefinitionResolver;
+use IonBytes\Bean\Definition\Resolver\ParameterResolver;
+use IonBytes\Bean\Tests\Unit\Fixtures\SampleClass;
+use IonBytes\Bean\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
