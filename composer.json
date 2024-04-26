@@ -19,10 +19,10 @@
         "psr/container": "^2.0@dev"
     },
     "require-dev": {
-        "ionbytes/coding-standard": "dev-master",
         "phpbench/phpbench": "^1.2@dev",
         "phpstan/phpstan": "2.0.x-dev",
         "phpunit/phpunit": "^11.1.x-dev",
+        "squizlabs/php_codesniffer": "4.0.x-dev",
         "vimeo/psalm": "^6.0@dev"
     },
     "provide": {
