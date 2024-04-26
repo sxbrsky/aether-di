@@ -33,7 +33,8 @@ class ParameterResolverTest extends TestCase
     private MockObject|ContainerInterface $container;
     private ParameterResolverInterface $resolver;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $this->container = $this->createMock(
             Container::class
         );
@@ -41,11 +42,13 @@ class ParameterResolverTest extends TestCase
         $this->resolver = new ParameterResolver($this->container);
     }
 
-    public function testReturnsEmptyArrayIfReflectionMethodIsNull(): void {
+    public function testReturnsEmptyArrayIfReflectionMethodIsNull(): void
+    {
         self::assertSame([], $this->resolver->resolveParameters());
     }
 
-    public function testThrowsExceptionIfParameterIsNotDefinedOrGuessable(): void {
+    public function testThrowsExceptionIfParameterIsNotDefinedOrGuessable(): void
+    {
         self::expectException(DependencyException::class);
         self::expectExceptionMessage('Parameter `$variable` has no value defined or guessable.');
 
@@ -54,7 +57,8 @@ class ParameterResolverTest extends TestCase
         $this->resolver->resolveParameters($reflection->getConstructor());
     }
 
-    public function testGetParameterDefaultValue(): void {
+    public function testGetParameterDefaultValue(): void
+    {
         $reflection = new ReflectionClass(ClassWithDefaultValue::class);
         $parameters = $this->resolver->resolveParameters($reflection->getConstructor());
 
@@ -64,7 +68,8 @@ class ParameterResolverTest extends TestCase
         );
     }
 
-    public function testGetParameterFromPassedParameters(): void {
+    public function testGetParameterFromPassedParameters(): void
+    {
         $reflection = new ReflectionClass(ExtendedSampleClass::class);
         $parameters = $this->resolver->resolveParameters(
             $reflection->getConstructor(),
@@ -76,7 +81,8 @@ class ParameterResolverTest extends TestCase
         self::assertSame('john', $parameters[0]);
     }
 
-    public function testGetParameterFromContainer(): void {
+    public function testGetParameterFromContainer(): void
+    {
         $this->container->expects(self::once())
             ->method('make')
             ->with(SampleClass::class, [])

@@ -37,12 +37,14 @@ class DefinitionResolverTest extends TestCase
     private State $state;
     private DefinitionResolver $resolver;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $this->state = new State();
         $this->resolver = new DefinitionResolver($this->state, new Container());
     }
 
-    public function testReturnInstanceIfWasPreviouslyResolved(): void {
+    public function testReturnInstanceIfWasPreviouslyResolved(): void
+    {
         $this->state->instances[SampleClass::class] = new SampleClass();
 
         self::assertInstanceOf(
@@ -51,33 +53,38 @@ class DefinitionResolverTest extends TestCase
         );
     }
 
-    public function testAutowiringAbstractWhileBindingNotFound(): void {
+    public function testAutowiringAbstractWhileBindingNotFound(): void
+    {
         self::assertInstanceOf(
             SampleClass::class,
             $this->resolver->make(SampleClass::class)
         );
     }
 
-    public function testCircularDependencyThrowsException(): void {
+    public function testCircularDependencyThrowsException(): void
+    {
         $this->expectException(CircularDependencyException::class);
         $this->resolver->make(ClassACircularDependency::class);
     }
 
-    public function testResolverThrowsExceptionIfClassNotFound(): void {
+    public function testResolverThrowsExceptionIfClassNotFound(): void
+    {
         self::expectException(EntryNotFoundException::class);
         self::expectExceptionMessage('Undefined entry `' . Shared::class . '`');
 
         $this->resolver->make(Shared::class);
     }
 
-    public function testResolverThrowsExceptionIfClassIsNotInstantiable(): void {
+    public function testResolverThrowsExceptionIfClassIsNotInstantiable(): void
+    {
         self::expectException(ContainerException::class);
         self::expectExceptionMessage(SampleInterface::class . ' is not instantiable.');
 
         $this->resolver->make(SampleInterface::class);
     }
 
-    public function testResolverCanReturnScalarValue(): void {
+    public function testResolverCanReturnScalarValue(): void
+    {
         $this->state->bindings['foo'] = new Scalar('bar');
 
         self::assertSame(

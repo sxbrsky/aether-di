@@ -17,7 +17,7 @@ final readonly class Alias implements Definition
 {
     public function __construct(
         public string $value,
-        public bool   $shared = false
+        public bool $shared = false
     ) {
     }
 }

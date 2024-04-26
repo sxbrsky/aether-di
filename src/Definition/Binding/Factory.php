@@ -21,7 +21,7 @@ final readonly class Factory implements Definition
 
     public function __construct(
         callable $callable,
-        bool     $shared = false
+        bool $shared = false
     ) {
         $this->value = $callable(...);
         $this->shared = $shared;

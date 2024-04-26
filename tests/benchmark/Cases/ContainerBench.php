@@ -23,7 +23,8 @@ class ContainerBench extends AbstractBenchCase
     #[AfterMethods('tearDown')]
     #[Assert('mode(variant.time.avg) < 5ms')]
     #[Assert('mode(variant.mem.real) < 10mb')]
-    public function benchResolvePerformance(): void {
+    public function benchResolvePerformance(): void
+    {
         $this->container->make(FooBar::class);
     }
 }

@@ -34,11 +34,13 @@ class ContainerTest extends TestCase
     /** @psalm-suppress PropertyNotSetInConstructor */
     private ContainerInterface $container;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $this->container = new Container();
     }
 
-    public function testContainerKnowTheEntry(): void {
+    public function testContainerKnowTheEntry(): void
+    {
         $this->container->instance(SampleClass::class, new SampleClass());
 
         self::assertTrue(
@@ -46,13 +48,15 @@ class ContainerTest extends TestCase
         );
     }
 
-    public function testContainerDoesNotKnowTheEntry(): void {
+    public function testContainerDoesNotKnowTheEntry(): void
+    {
         self::assertFalse(
             $this->container->has('foo')
         );
     }
 
-    public function testSharedInstanceReturnsTheInstance(): void {
+    public function testSharedInstanceReturnsTheInstance(): void
+    {
         $instance = new SampleClass();
 
         self::assertSame(
@@ -61,7 +65,8 @@ class ContainerTest extends TestCase
         );
     }
 
-    public function testSharedConcreteResolution(): void {
+    public function testSharedConcreteResolution(): void
+    {
         $this->container->shared(SampleClass::class, SampleClass::class);
 
         self::assertSame(
@@ -70,7 +75,8 @@ class ContainerTest extends TestCase
         );
     }
 
-    public function testClosureResolution(): void {
+    public function testClosureResolution(): void
+    {
         $this->container->bind('foo', function () {
             return 'bar';
         });
@@ -78,7 +84,8 @@ class ContainerTest extends TestCase
         self::assertSame('bar', $this->container->make('foo'));
     }
 
-    public function testBindingInterfaceToImplementation(): void {
+    public function testBindingInterfaceToImplementation(): void
+    {
         $this->container->bind(SampleInterface::class, SampleClass::class);
 
         self::assertInstanceOf(

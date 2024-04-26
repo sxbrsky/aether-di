@@ -19,11 +19,13 @@ abstract class AbstractBenchCase
     /** @psalm-suppress PropertyNotSetInConstructor */
     protected ContainerInterface $container;
 
-    public function setup(): void {
+    public function setup(): void
+    {
         $this->container = new Container();
     }
 
-    public function tearDown(): void {
+    public function tearDown(): void
+    {
         unset($this->container);
     }
 }

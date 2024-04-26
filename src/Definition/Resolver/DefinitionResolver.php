@@ -43,7 +43,7 @@ final class DefinitionResolver implements FactoryInterface
     private ParameterResolverInterface $parameterResolver;
 
     public function __construct(
-        private readonly State              $state,
+        private readonly State $state,
         private readonly ContainerInterface $container
     ) {
         $this->parameterResolver = new ParameterResolver($this->container);
@@ -52,7 +52,8 @@ final class DefinitionResolver implements FactoryInterface
     /**
      * @inheritDoc
      */
-    public function make(string $abstract, array $parameters = []): int|float|string|callable|object {
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object
+    {
         if (array_key_exists($abstract, $this->state->instances)) {
             return $this->state->instances[$abstract];
         }
@@ -98,7 +99,8 @@ final class DefinitionResolver implements FactoryInterface
      *
      * @throws \ReflectionException
      */
-    private function autowire(string $abstract, array $parameters = []): object {
+    private function autowire(string $abstract, array $parameters = []): object
+    {
         if (isset($this->buildStack[$abstract])) {
             throw new CircularDependencyException(
                 "Circular dependency detected while trying to resolve entry $abstract."

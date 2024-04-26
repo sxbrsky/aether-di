@@ -15,7 +15,8 @@ use Psr\Container\NotFoundExceptionInterface;
 
 class EntryNotFoundException extends ContainerException implements NotFoundExceptionInterface
 {
-    public function __construct(string $id) {
+    public function __construct(string $id)
+    {
         parent::__construct("Undefined entry `$id`.");
     }
 }

@@ -35,11 +35,13 @@ class InvokerTest extends TestCase
 {
     private ContainerInterface $container;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $this->container = new Container();
     }
 
-    public function testCallValidClosure(): void {
+    public function testCallValidClosure(): void
+    {
         $result = $this->container->call(
             static function (string $name): string {
                 return $name;
@@ -50,17 +52,20 @@ class InvokerTest extends TestCase
         self::assertSame('johny', $result);
     }
 
-    public function testCallValidCallableArray(): void {
+    public function testCallValidCallableArray(): void
+    {
         $result = $this->container->call([InvokableClass::class, 'hello'], ['name' => 'world']);
         self::assertSame('Hello, world', $result);
     }
 
-    public function testCallCallableArrayWithoutMethod(): void {
+    public function testCallCallableArrayWithoutMethod(): void
+    {
         $result = $this->container->call([InvokableClass::class], ['name' => 'world']);
         self::assertSame('world', $result);
     }
 
-    public function testCallResolveParametersFromContainer(): void {
+    public function testCallResolveParametersFromContainer(): void
+    {
         $instance = new ExtendedSampleClass('johny');
         $this->container->shared(ExtendedSampleClass::class, $instance);
 
@@ -73,7 +78,8 @@ class InvokerTest extends TestCase
         self::assertSame("Hello, $instance->name", $result);
     }
 
-    public function testInvalidCallableThrowsException(): void {
+    public function testInvalidCallableThrowsException(): void
+    {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
             'Method Bean\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'

@@ -39,7 +39,8 @@ final class Invoker implements InvokerInterface
     /**
      * @inheritDoc
      */
-    public function call(callable|array|string $callable, array $parameters = []): mixed {
+    public function call(callable|array|string $callable, array $parameters = []): mixed
+    {
         if (is_array($callable)) {
             if (!isset($callable[1])) {
                 $callable[1] = '__invoke';

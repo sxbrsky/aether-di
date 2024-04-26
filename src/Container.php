@@ -37,7 +37,8 @@ class Container implements ContainerInterface
     private State $state;
     private FactoryInterface $factory;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->state = new State();
         $this->factory = new DefinitionResolver($this->state, $this);
@@ -55,14 +56,16 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function has(string $id): bool {
+    public function has(string $id): bool
+    {
         return array_key_exists($id, $this->state->instances) || array_key_exists($id, $this->state->bindings);
     }
 
     /**
      * @inheritDoc
      */
-    public function get(string $id): int|float|string|callable|object {
+    public function get(string $id): int|float|string|callable|object
+    {
         try {
             return $this->make($id);
         } catch (Exception $e) {
@@ -77,7 +80,8 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function instance(string $id, int|float|string|callable|object $instance): int|float|string|callable|object {
+    public function instance(string $id, int|float|string|callable|object $instance): int|float|string|callable|object
+    {
         $this->state->instances[$id] = $instance;
         return $instance;
     }
@@ -85,7 +89,8 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function bind(string $abstract, int|float|string|callable|object $concrete, bool $shared = false): void {
+    public function bind(string $abstract, int|float|string|callable|object $concrete, bool $shared = false): void
+    {
         $concrete = match (true) {
             $concrete instanceof Closure => new Factory($concrete, $shared),
             $concrete instanceof \WeakReference => new WeakReference($concrete),
@@ -101,14 +106,16 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function shared(string $abstract, int|float|string|callable|object $concrete): void {
+    public function shared(string $abstract, int|float|string|callable|object $concrete): void
+    {
         $this->bind($abstract, $concrete, true);
     }
 
     /**
      * @inheritDoc
      */
-    public function isShared(string $abstract): bool {
+    public function isShared(string $abstract): bool
+    {
         if (array_key_exists($abstract, $this->state->instances)) {
             return true;
         }
@@ -125,18 +132,21 @@ class Container implements ContainerInterface
     /**
      * @inheritDoc
      */
-    public function make(string $abstract, array $parameters = []): int|float|string|callable|object {
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object
+    {
         return $this->factory->make($abstract, $parameters);
     }
 
     /**
      * @inheritDoc
      */
-    public function call(callable|array|string $callable, array $parameters = []): mixed {
+    public function call(callable|array|string $callable, array $parameters = []): mixed
+    {
         return $this->getInvoker()->call($callable, $parameters);
     }
 
-    private function getInvoker(): InvokerInterface {
+    private function getInvoker(): InvokerInterface
+    {
         return new Invoker($this);
     }
 }

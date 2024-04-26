@@ -29,7 +29,7 @@ final class ParameterResolver implements ParameterResolverInterface
      */
     public function resolveParameters(
         ReflectionFunctionAbstract $reflectionMethod = null,
-        array                      $parameters = []
+        array $parameters = []
     ): array {
         if ($reflectionMethod === null) {
             return [];

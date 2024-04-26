@@ -13,11 +13,13 @@ namespace Bean\Tests\Unit\Fixtures;
 
 class InvokableClass
 {
-    public function __invoke(string $name): string {
+    public function __invoke(string $name): string
+    {
         return $name;
     }
 
-    public function hello(string $name): string {
+    public function hello(string $name): string
+    {
         return "Hello, $name";
     }
 }

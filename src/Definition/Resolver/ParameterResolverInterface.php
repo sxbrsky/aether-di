@@ -28,6 +28,6 @@ interface ParameterResolverInterface
      */
     public function resolveParameters(
         ReflectionFunctionAbstract $reflectionMethod = null,
-        array                      $parameters = []
+        array $parameters = []
     ): array;
 }
