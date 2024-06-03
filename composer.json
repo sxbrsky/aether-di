@@ -16,14 +16,14 @@
     },
     "require": {
         "php": ">=8.2",
-        "psr/container": "^2.0@dev"
+        "psr/container": "^2.0.x-dev"
     },
     "require-dev": {
-        "phpbench/phpbench": "^1.2@dev",
+        "phpbench/phpbench": "^1.2.x-dev",
         "phpstan/phpstan": "2.0.x-dev",
         "phpunit/phpunit": "^11.1.x-dev",
         "squizlabs/php_codesniffer": "4.0.x-dev",
-        "vimeo/psalm": "^6.0@dev"
+        "vimeo/psalm": "^6.x-dev"
     },
     "provide": {
         "psr/container-implementation": "2.0.2"
@@ -47,15 +47,10 @@
         "sort-packages": true
     },
     "scripts": {
-        "check": [
-            "@cs-check",
-            "@static-analysis",
-            "@test"
-        ],
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf -vpw",
+        "lint": "phpcs",
+        "lint-fix": "phpcbf",
         "phpbench": "phpbench run --report=compressed",
-        "static-analysis": "psalm --shepherd --stats",
+        "psalm": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-html coverage"
     }

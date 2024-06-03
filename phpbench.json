@@ -10,7 +10,7 @@
 
     "report.generators": {
         "compressed": {
-            "title": "IonBytes Benchmark Tests",
+            "title": "Bean Benchmark Tests",
             "generator": "expression",
             "cols": [ "benchmark", "subject", "mem_peak", "mode", "mean", "best", "worst" ]
         }
