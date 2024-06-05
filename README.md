@@ -1,11 +1,31 @@
 # bean
 
-[![PHP Version Require](https://poser.pugx.org/nuldark/bean/require/php)](https://packagist.org/packages/nuldark/bean)
-[![Latest Stable Version](https://poser.pugx.org/nuldark/bean/v/stable)](https://packagist.org/packages/nuldark/bean)
-[![tests](https://github.com/nuldark/bean/actions/workflows/tests.yml/badge.svg)](https://github.com/nuldark/bean/actions)
-[![static analysis](https://github.com/nuldark/bean/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/nuldark/bean/actions)
-[![Total Downloads](https://poser.pugx.org/nuldark/bean/downloads)](https://packagist.org/nuldark/bean)
-[![License](https://poser.pugx.org/nuldark/bean/license.svg)](https://packagist.org/packages/nuldark/bean)
+<div align="center">
+    <a href="https://github.com/nuldark/bean/actions">
+        <img 
+            src="https://github.com/nuldark/bean/actions/workflows/ci.yml/badge.svg" 
+            alt="Build status"
+        />
+    </a>
+    <a href="https://packagist.org/packages/nuldark/bean">
+        <img 
+            src="https://img.shields.io/packagist/dt/nuldark/bean" 
+            alt="Latest stable version"
+        />
+    </a>
+    <a href="https://packagist.org/packages/nuldark/bean">
+        <img 
+            src="https://poser.pugx.org/nuldark/bean/downloads" 
+            alt="Total downloads"
+        />
+    </a>
+    <a href="https://packagist.org/packages/nuldark/bean">
+        <img 
+            src="https://poser.pugx.org/nuldark/bean/license.svg" 
+            alt="License" 
+        />
+    </a>
+</div>
 
 **bean** is an open-source implementation of the PHP-FIG PSR-11 standard, which
 defines a common interface for dependency injection containers. Aims to provide a simple and efficient Inversion of Control (IoC) container for PHP applications.
