@@ -27,7 +27,9 @@
     </a>
 </div>
 
-**bean** is an open-source implementation of the PHP-FIG PSR-11 standard, which
+## About Bean
+
+**Bean** is an open-source implementation of the PHP-FIG PSR-11 standard, which
 defines a common interface for dependency injection containers. Aims to provide a simple and efficient Inversion of Control (IoC) container for PHP applications.
 
 ## Features
