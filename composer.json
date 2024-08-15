@@ -21,7 +21,7 @@
     "require-dev": {
         "phpbench/phpbench": "^1.3",
         "phpstan/phpstan": "2.0.x-dev",
-        "phpunit/phpunit": "^11.1.x-dev",
+        "phpunit/phpunit": "^11.3.x-dev",
         "squizlabs/php_codesniffer": "4.0.x-dev",
         "vimeo/psalm": "^6.x-dev"
     },
