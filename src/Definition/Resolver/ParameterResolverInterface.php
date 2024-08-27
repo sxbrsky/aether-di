@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Resolver;
+namespace Sxbrsky\DependencyInjection\Definition\Resolver;
 
 use ReflectionFunctionAbstract;
 

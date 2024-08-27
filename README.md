@@ -1,27 +1,27 @@
-# bean
+# dependency-injection
 
 <div align="center">
-    <a href="https://github.com/sxbrsky/bean/actions">
+    <a href="https://github.com/sxbrsky/php-dependency-injection/actions">
         <img 
-            src="https://github.com/sxbrsky/bean/actions/workflows/ci.yml/badge.svg" 
+            src="https://github.com/sxbrsky/php-dependency-injection/actions/workflows/ci.yml/badge.svg" 
             alt="Build status"
         />
     </a>
-    <a href="https://packagist.org/packages/sxbrsky/bean">
+    <a href="https://packagist.org/packages/sxbrsky/dependency-injection">
         <img 
             src="https://img.shields.io/packagist/dt/sxbrsky/bean" 
             alt="Latest stable version"
         />
     </a>
-    <a href="https://packagist.org/packages/sxbrsky/bean">
+    <a href="https://packagist.org/packages/sxbrsky/dependency-injection">
         <img 
-            src="https://poser.pugx.org/sxbrsky/bean/downloads" 
+            src="https://poser.pugx.org/sxbrsky/dependency-injection/downloads" 
             alt="Total downloads"
         />
     </a>
-    <a href="https://packagist.org/packages/sxbrsky/bean">
+    <a href="https://packagist.org/packages/sxbrsky/dependency-injection">
         <img 
-            src="https://poser.pugx.org/sxbrsky/bean/license.svg" 
+            src="https://poser.pugx.org/sxbrsky/dependency-injection/license.svg" 
             alt="License" 
         />
     </a>
@@ -43,12 +43,12 @@ defines a common interface for dependency injection containers. Aims to provide 
 Use the composer to install:
 
 ```bash
-composer require sxbrsky/bean
+composer require sxbrsky/dependency-injection
 ```
 
 ## Support
 
-- [Issues](https://github.com/sxbrsky/bean/issues/)
+- [Issues](https://github.com/sxbrsky/php-dependency-injection/issues/)
 
 ## License
 

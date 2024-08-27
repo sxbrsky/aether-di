@@ -9,10 +9,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Binding;
+namespace Sxbrsky\DependencyInjection\Definition\Binding;
 
 use Closure;
-use Bean\Definition\Definition;
+use Sxbrsky\DependencyInjection\Definition\Definition;
 
 final readonly class Factory implements Definition
 {

@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean;
+namespace Sxbrsky\DependencyInjection;
 
 interface FactoryInterface
 {
@@ -23,8 +23,8 @@ interface FactoryInterface
      *
      * @return ($abstract is class-string ? T : int|float|string|callable|object)
      *
-     * @throws \Bean\Definition\Exception\CircularDependencyException
-     * @throws \Bean\Exception\EntryNotFoundException
+     * @throws \Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException
+     * @throws \Sxbrsky\DependencyInjection\Exception\EntryNotFoundException
      *
      * @template T of object
      */

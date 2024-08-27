@@ -10,7 +10,7 @@
 
     "report.generators": {
         "compressed": {
-            "title": "Bean Benchmark Tests",
+            "title": "Dependency Injection Benchmark Tests",
             "generator": "expression",
             "cols": [ "benchmark", "subject", "mem_peak", "mode", "mean", "best", "worst" ]
         }

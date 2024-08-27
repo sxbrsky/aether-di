@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean;
+namespace Sxbrsky\DependencyInjection;
 
 use Closure;
 use Exception;
 use InvalidArgumentException;
-use Bean\Definition\Binding\Alias;
-use Bean\Definition\Binding\Factory;
-use Bean\Definition\Binding\Scalar;
-use Bean\Definition\Binding\Shared;
-use Bean\Definition\Binding\WeakReference;
-use Bean\Definition\Exception\CircularDependencyException;
-use Bean\Definition\Resolver\DefinitionResolver;
-use Bean\Definition\Resolver\DefinitionResolverInterface;
-use Bean\Definition\State;
-use Bean\Exception\EntryNotFoundException;
-use Bean\Invoker\Invoker;
+use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
+use Sxbrsky\DependencyInjection\Definition\Binding\Factory;
+use Sxbrsky\DependencyInjection\Definition\Binding\Scalar;
+use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
+use Sxbrsky\DependencyInjection\Definition\Binding\WeakReference;
+use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolverInterface;
+use Sxbrsky\DependencyInjection\Definition\State;
+use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
+use Sxbrsky\DependencyInjection\Invoker\Invoker;
 
 use function array_key_exists;
 use function is_object;

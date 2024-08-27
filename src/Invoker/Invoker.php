@@ -9,18 +9,18 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Invoker;
+namespace Sxbrsky\DependencyInjection\Invoker;
 
 use Closure;
-use Bean\ContainerInterface;
-use Bean\Definition\Resolver\ParameterResolver;
-use Bean\Definition\Resolver\ParameterResolverInterface;
-use Bean\Exception\ContainerException;
-use Bean\Exception\RuntimeException;
-use Bean\InvokerInterface;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
+use Sxbrsky\DependencyInjection\Exception\ContainerException;
+use Sxbrsky\DependencyInjection\Exception\RuntimeException;
+use Sxbrsky\DependencyInjection\InvokerInterface;
 
 use function is_array;
 use function is_callable;

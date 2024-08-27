@@ -9,11 +9,11 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Resolver;
+namespace Sxbrsky\DependencyInjection\Definition\Resolver;
 
-use Bean\ContainerInterface;
-use Bean\Definition\Exception\DependencyException;
 use ReflectionFunctionAbstract;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
 
 use function array_key_exists;
 

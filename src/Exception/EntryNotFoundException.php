@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Exception;
+namespace Sxbrsky\DependencyInjection\Exception;
 
 use Psr\Container\NotFoundExceptionInterface;
 

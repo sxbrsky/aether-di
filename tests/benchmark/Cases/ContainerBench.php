@@ -9,13 +9,13 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Benchmark\Cases;
+namespace Sxbrsky\DependencyInjection\Tests\Benchmark\Cases;
 
-use Bean\Tests\Benchmark\AbstractBenchCase;
-use Bean\Tests\Benchmark\Fixtures\FooBar;
 use PhpBench\Attributes\AfterMethods;
 use PhpBench\Attributes\Assert;
 use PhpBench\Attributes\BeforeMethods;
+use Sxbrsky\DependencyInjection\Tests\Benchmark\AbstractBenchCase;
+use Sxbrsky\DependencyInjection\Tests\Benchmark\Fixtures\FooBar;
 
 class ContainerBench extends AbstractBenchCase
 {

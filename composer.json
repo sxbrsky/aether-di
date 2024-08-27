@@ -1,6 +1,6 @@
 {
-    "name": "sxbrsky/bean",
-    "description": "A lightweight dependency injection container for PHP.",
+    "name": "sxbrsky/dependency-injection",
+    "description": "A lightweight PSR-11 dependency injection container.",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -11,8 +11,8 @@
         "container"
     ],
     "support": {
-        "issues": "https://github.com/sxbrsky/bean/issues",
-        "source": "https://github.com/sxbrsky/bean"
+        "issues": "https://github.com/sxbrsky/php-dependency-injection/issues",
+        "source": "https://github.com/sxbrsky/php-dependency-injection"
     },
     "require": {
         "php": ">=8.2",
@@ -31,13 +31,13 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Bean\\": "src/"
+            "Sxbrsky\\DependencyInjection\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bean\\Tests\\Benchmark\\": "tests/benchmark/",
-            "Bean\\Tests\\Unit\\": "tests/unit/"
+            "Sxbrsky\\DependencyInjection\\Tests\\Benchmark\\": "tests/benchmark/",
+            "Sxbrsky\\DependencyInjection\\Tests\\Unit\\": "tests/unit/"
         }
     },
     "config": {

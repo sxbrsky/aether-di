@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Benchmark\Fixtures;
+namespace Sxbrsky\DependencyInjection\Tests\Benchmark\Fixtures;
 
 class Foo
 {

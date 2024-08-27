@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Unit\Fixtures;
+namespace Sxbrsky\DependencyInjection\Tests\Unit\Fixtures;
 
 class InvokableClass
 {

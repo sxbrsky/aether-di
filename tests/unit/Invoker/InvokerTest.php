@@ -9,21 +9,21 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Unit\Invoker;
+namespace Sxbrsky\DependencyInjection\Tests\Unit\Invoker;
 
-use Bean\Container;
-use Bean\ContainerInterface;
-use Bean\Definition\Binding\Alias;
-use Bean\Definition\Binding\Shared;
-use Bean\Definition\Resolver\DefinitionResolver;
-use Bean\Definition\Resolver\ParameterResolver;
-use Bean\Exception\RuntimeException;
-use Bean\Invoker\Invoker;
-use Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
-use Bean\Tests\Unit\Fixtures\InvokableClass;
-use Bean\Tests\Unit\Fixtures\SampleClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sxbrsky\DependencyInjection\Container;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
+use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
+use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Sxbrsky\DependencyInjection\Exception\RuntimeException;
+use Sxbrsky\DependencyInjection\Invoker\Invoker;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ExtendedSampleClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\InvokableClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
 
 #[CoversClass(Invoker::class)]
 #[CoversClass(Container::class)]
@@ -82,7 +82,7 @@ class InvokerTest extends TestCase
     {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
-            'Method Bean\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'
+            'Method Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'
         );
 
         $this->container->call([SampleClass::class]);

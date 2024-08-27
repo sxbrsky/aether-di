@@ -9,10 +9,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Benchmark;
+namespace Sxbrsky\DependencyInjection\Tests\Benchmark;
 
-use Bean\Container;
-use Bean\ContainerInterface;
+use Sxbrsky\DependencyInjection\Container;
+use Sxbrsky\DependencyInjection\ContainerInterface;
 
 abstract class AbstractBenchCase
 {

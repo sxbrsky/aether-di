@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition;
+namespace Sxbrsky\DependencyInjection\Definition;
 
 /**
  * @property-read int|float|string|callable|object $value

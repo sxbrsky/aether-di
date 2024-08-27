@@ -9,19 +9,19 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Unit;
+namespace Sxbrsky\DependencyInjection\Tests\Unit;
 
-use Bean\Container;
-use Bean\ContainerInterface;
-use Bean\Definition\Binding\Alias;
-use Bean\Definition\Binding\Factory;
-use Bean\Definition\Binding\Shared;
-use Bean\Definition\Resolver\DefinitionResolver;
-use Bean\Definition\Resolver\ParameterResolver;
-use Bean\Tests\Unit\Fixtures\SampleClass;
-use Bean\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sxbrsky\DependencyInjection\Container;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
+use Sxbrsky\DependencyInjection\Definition\Binding\Factory;
+use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
+use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Factory::class)]

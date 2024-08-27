@@ -9,23 +9,23 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Unit\Definition\Resolver;
+namespace Sxbrsky\DependencyInjection\Tests\Unit\Definition\Resolver;
 
-use Bean\Container;
-use Bean\ContainerInterface;
-use Bean\Definition\Exception\DependencyException;
-use Bean\Definition\Resolver\ParameterResolver;
-use Bean\Definition\Resolver\ParameterResolverInterface;
-use Bean\Tests\Unit\Fixtures\ClassWithDefaultValue;
-use Bean\Tests\Unit\Fixtures\ClassWithDependency;
-use Bean\Tests\Unit\Fixtures\ExtendedSampleClass;
-use Bean\Tests\Unit\Fixtures\SampleClass;
-use Bean\Tests\Unit\Fixtures\TypedClass;
-use Bean\Tests\Unit\Fixtures\UntypedClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use Sxbrsky\DependencyInjection\Container;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassWithDefaultValue;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassWithDependency;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ExtendedSampleClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\TypedClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\UntypedClass;
 
 #[CoversClass(ParameterResolver::class)]
 class ParameterResolverTest extends TestCase

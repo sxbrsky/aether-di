@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Binding;
+namespace Sxbrsky\DependencyInjection\Definition\Binding;
 
-use Bean\Definition\Definition;
+use Sxbrsky\DependencyInjection\Definition\Definition;
 
 final readonly class Alias implements Definition
 {

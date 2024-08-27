@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Tests\Unit\Definition\Resolver;
+namespace Sxbrsky\DependencyInjection\Tests\Unit\Definition\Resolver;
 
-use Bean\Container;
-use Bean\Definition\Binding\Alias;
-use Bean\Definition\Binding\Scalar;
-use Bean\Definition\Exception\CircularDependencyException;
-use Bean\Definition\Resolver\DefinitionResolver;
-use Bean\Definition\Resolver\ParameterResolver;
-use Bean\Definition\State;
-use Bean\Exception\ContainerException;
-use Bean\Exception\EntryNotFoundException;
-use Bean\Tests\Unit\Fixtures\ClassACircularDependency;
-use Bean\Tests\Unit\Fixtures\SampleClass;
-use Bean\Tests\Unit\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sxbrsky\DependencyInjection\Container;
+use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
+use Sxbrsky\DependencyInjection\Definition\Binding\Scalar;
+use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Sxbrsky\DependencyInjection\Definition\State;
+use Sxbrsky\DependencyInjection\Exception\ContainerException;
+use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassACircularDependency;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
+use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Scalar::class)]

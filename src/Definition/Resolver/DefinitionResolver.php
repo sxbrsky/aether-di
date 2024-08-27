@@ -9,18 +9,18 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Resolver;
+namespace Sxbrsky\DependencyInjection\Definition\Resolver;
 
-use Bean\ContainerInterface;
-use Bean\Definition\Binding\Alias;
-use Bean\Definition\Binding\Factory as FactoryBinding;
-use Bean\Definition\Binding\WeakReference;
-use Bean\Definition\Exception\CircularDependencyException;
-use Bean\Definition\State;
-use Bean\Exception\ContainerException;
-use Bean\Exception\EntryNotFoundException;
-use Bean\FactoryInterface;
 use ReflectionClass;
+use Sxbrsky\DependencyInjection\ContainerInterface;
+use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
+use Sxbrsky\DependencyInjection\Definition\Binding\Factory as FactoryBinding;
+use Sxbrsky\DependencyInjection\Definition\Binding\WeakReference;
+use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Sxbrsky\DependencyInjection\Definition\State;
+use Sxbrsky\DependencyInjection\Exception\ContainerException;
+use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
+use Sxbrsky\DependencyInjection\FactoryInterface;
 
 use function array_key_exists;
 use function class_exists;
@@ -38,7 +38,7 @@ final class DefinitionResolver implements FactoryInterface
     /**
      * The parameter resolver.
      *
-     * @var \Bean\Definition\Resolver\ParameterResolverInterface $parameterResolver
+     * @var \Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface $parameterResolver
      */
     private ParameterResolverInterface $parameterResolver;
 

@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition\Exception;
+namespace Sxbrsky\DependencyInjection\Definition\Exception;
 
-use Bean\Exception\ContainerException;
+use Sxbrsky\DependencyInjection\Exception\ContainerException;
 
 class DependencyException extends ContainerException
 {

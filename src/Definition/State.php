@@ -9,14 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Bean\Definition;
+namespace Sxbrsky\DependencyInjection\Definition;
 
 final class State
 {
     /**
      * The bindings.
      *
-     * @var array<string, \Bean\Definition\Definition> $bindings
+     * @var array<string, \Sxbrsky\DependencyInjection\Definition\Definition> $bindings
      */
     public array $bindings = [];
 
