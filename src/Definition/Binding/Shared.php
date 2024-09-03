@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the nuldark/bean.
+ * This file is part of the sxbrsky/dependency-injection.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
