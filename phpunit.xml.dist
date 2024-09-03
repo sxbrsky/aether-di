@@ -13,19 +13,19 @@
          failOnWarning="true"
          failOnRisky="true"
 >
-    <coverage/>
+  <coverage/>
 
-    <testsuites>
-        <testsuite name="Bean Test Suite">
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
-    <source restrictNotices="true" restrictWarnings="true">
-        <include>
-            <directory>src</directory>
-        </include>
-    </source>
-    <php>
-        <ini name="error_reporting" value="24575"/>
-    </php>
+  <testsuites>
+    <testsuite name="Test Suite">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <source restrictNotices="true" restrictWarnings="true">
+    <include>
+      <directory>src</directory>
+    </include>
+  </source>
+  <php>
+    <ini name="error_reporting" value="24575"/>
+  </php>
 </phpunit>

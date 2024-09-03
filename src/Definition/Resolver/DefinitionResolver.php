@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the nuldark/bean.
+ * This file is part of the sxbrsky/dependency-injection.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -52,7 +52,7 @@ final class DefinitionResolver implements FactoryInterface
     /**
      * @inheritDoc
      */
-    public function make(string $abstract, array $parameters = []): int|float|string|callable|object
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object|null
     {
         if (array_key_exists($abstract, $this->state->instances)) {
             return $this->state->instances[$abstract];
@@ -81,6 +81,10 @@ final class DefinitionResolver implements FactoryInterface
 
         if ($concrete instanceof WeakReference) {
             return $concrete->value->get();
+        }
+
+        if (!\property_exists($concrete, 'value')) {
+            return null;
         }
 
         return $concrete->value;

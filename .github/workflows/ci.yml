@@ -29,7 +29,7 @@ jobs:
       - name: check coding standards
         run: vendor/bin/phpcs
       - name: run static analysis
-        run: vendor/bin/psalm --shepherd --stats
+        run: vendor/bin/phpstan
       - name: run benchmark
         run: vendor/bin/phpbench run --report=compressed || true
       - name: run unit tests

@@ -2,17 +2,21 @@
 /.idea/
 /.fleet/
 /.run/
+/.vscode/
 
 # composer
 composer.lock
-/composer.phar
-/auth.json
-/vendor/*
+composer.phar
+/vendor/
 
-# caches
-.psalm.cache
-.phpcs.cache
+# phpunit
 .phpunit.cache
+phpunit.xml
 
-# tests
-coverage/
+# php-cs-fixer
+.php-cs-fixer.cache
+.php-cs-fixer.php
+
+# phpstan
+.phpstan.cache
+.phpstan.neon

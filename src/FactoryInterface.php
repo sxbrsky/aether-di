@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the nuldark/bean.
+ * This file is part of the sxbrsky/dependency-injection.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -21,12 +21,12 @@ interface FactoryInterface
      * @param array<string, array|object|scalar|null> $parameters
      *  Parameters to construct a new class.
      *
-     * @return ($abstract is class-string ? T : int|float|string|callable|object)
+     * @return ($abstract is class-string ? T : int|float|string|callable|object|null)
      *
      * @throws \Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException
      * @throws \Sxbrsky\DependencyInjection\Exception\EntryNotFoundException
      *
      * @template T of object
      */
-    public function make(string $abstract, array $parameters = []): int|float|string|callable|object;
+    public function make(string $abstract, array $parameters = []): int|float|string|callable|object|null;
 }
