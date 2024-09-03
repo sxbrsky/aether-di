@@ -25,7 +25,6 @@ use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassWithDependency;
 use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ExtendedSampleClass;
 use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
 use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\TypedClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\UntypedClass;
 
 #[CoversClass(ParameterResolver::class)]
 class ParameterResolverTest extends TestCase

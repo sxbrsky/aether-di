@@ -12,19 +12,21 @@
 namespace Sxbrsky\DependencyInjection\Invoker;
 
 use Closure;
+
+use function is_array;
+use function is_callable;
+use function is_string;
+
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
 use Sxbrsky\DependencyInjection\ContainerInterface;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
+
 use Sxbrsky\DependencyInjection\Exception\ContainerException;
 use Sxbrsky\DependencyInjection\Exception\RuntimeException;
 use Sxbrsky\DependencyInjection\InvokerInterface;
-
-use function is_array;
-use function is_callable;
-use function is_string;
 
 final class Invoker implements InvokerInterface
 {

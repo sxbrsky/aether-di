@@ -11,11 +11,12 @@
 
 namespace Sxbrsky\DependencyInjection\Definition\Resolver;
 
+use function array_key_exists;
+
 use ReflectionFunctionAbstract;
 use Sxbrsky\DependencyInjection\ContainerInterface;
-use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
 
-use function array_key_exists;
+use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
 
 final class ParameterResolver implements ParameterResolverInterface
 {

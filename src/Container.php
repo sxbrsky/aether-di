@@ -11,26 +11,28 @@
 
 namespace Sxbrsky\DependencyInjection;
 
+use function array_key_exists;
+
 use Closure;
 use Exception;
 use InvalidArgumentException;
+
+use function is_object;
+use function is_scalar;
+use function is_string;
+use function property_exists;
+
 use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
 use Sxbrsky\DependencyInjection\Definition\Binding\Factory;
 use Sxbrsky\DependencyInjection\Definition\Binding\Scalar;
 use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
 use Sxbrsky\DependencyInjection\Definition\Binding\WeakReference;
+
 use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
 use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolverInterface;
 use Sxbrsky\DependencyInjection\Definition\State;
 use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
 use Sxbrsky\DependencyInjection\Invoker\Invoker;
-
-use function array_key_exists;
-use function is_object;
-use function is_scalar;
-use function is_string;
-use function property_exists;
 
 class Container implements ContainerInterface
 {

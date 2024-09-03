@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the sxbrsky/clock.
+ * This file is part of the sxbrsky/dependency-injection.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
