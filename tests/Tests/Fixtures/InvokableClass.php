@@ -9,12 +9,17 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Fixtures;
+namespace Sxbrsky\Tests\Fixtures;
 
-class ClassBCircularDependency
+class InvokableClass
 {
-    public function __construct(
-        public ClassACircularDependency $class
-    ) {
+    public function __invoke(string $name): string
+    {
+        return $name;
+    }
+
+    public function hello(string $name): string
+    {
+        return "Hello, $name";
     }
 }

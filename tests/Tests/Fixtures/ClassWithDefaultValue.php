@@ -9,12 +9,12 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Fixtures;
+namespace Sxbrsky\Tests\Fixtures;
 
-class TypedClass
+class ClassWithDefaultValue
 {
     public function __construct(
-        public SampleClass $sampleClass
+        public string $default = 'default'
     ) {
     }
 }

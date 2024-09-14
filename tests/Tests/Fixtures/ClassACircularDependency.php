@@ -9,8 +9,12 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Benchmark\Fixtures;
+namespace Sxbrsky\Tests\Fixtures;
 
-class Bar
+class ClassACircularDependency
 {
+    public function __construct(
+        public ClassBCircularDependency $class
+    ) {
+    }
 }

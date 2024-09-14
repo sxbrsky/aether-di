@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Definition\Resolver;
+namespace Sxbrsky\Tests\Unit\Definition\Resolver;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -22,9 +22,9 @@ use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
 use Sxbrsky\DependencyInjection\Definition\State;
 use Sxbrsky\DependencyInjection\Exception\ContainerException;
 use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassACircularDependency;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleInterface;
+use Sxbrsky\Tests\Fixtures\ClassACircularDependency;
+use Sxbrsky\Tests\Fixtures\SampleClass;
+use Sxbrsky\Tests\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Scalar::class)]
@@ -70,9 +70,9 @@ class DefinitionResolverTest extends TestCase
     public function testResolverThrowsExceptionIfClassNotFound(): void
     {
         self::expectException(EntryNotFoundException::class);
-        self::expectExceptionMessage('Undefined entry `' . Shared::class . '`');
+        self::expectExceptionMessage('Undefined entry `test`');
 
-        $this->resolver->make(Shared::class);
+        $this->resolver->make('test');
     }
 
     public function testResolverThrowsExceptionIfClassIsNotInstantiable(): void

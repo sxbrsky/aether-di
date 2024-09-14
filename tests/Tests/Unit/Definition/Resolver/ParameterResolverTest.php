@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Definition\Resolver;
+namespace Sxbrsky\Tests\Unit\Definition\Resolver;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -20,11 +20,11 @@ use Sxbrsky\DependencyInjection\ContainerInterface;
 use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassWithDefaultValue;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ClassWithDependency;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ExtendedSampleClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\TypedClass;
+use Sxbrsky\Tests\Fixtures\ClassWithDefaultValue;
+use Sxbrsky\Tests\Fixtures\ClassWithDependency;
+use Sxbrsky\Tests\Fixtures\ExtendedSampleClass;
+use Sxbrsky\Tests\Fixtures\SampleClass;
+use Sxbrsky\Tests\Fixtures\TypedClass;
 
 #[CoversClass(ParameterResolver::class)]
 class ParameterResolverTest extends TestCase

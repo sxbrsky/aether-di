@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Benchmark;
+namespace Sxbrsky\Performance;
 
 use Sxbrsky\DependencyInjection\Container;
 use Sxbrsky\DependencyInjection\ContainerInterface;

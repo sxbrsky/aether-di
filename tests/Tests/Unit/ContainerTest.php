@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit;
+namespace Sxbrsky\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -20,8 +20,8 @@ use Sxbrsky\DependencyInjection\Definition\Binding\Factory;
 use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
 use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleInterface;
+use Sxbrsky\Tests\Fixtures\SampleClass;
+use Sxbrsky\Tests\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Factory::class)]

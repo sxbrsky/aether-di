@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Invoker;
+namespace Sxbrsky\Tests\Unit\Invoker;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -21,9 +21,9 @@ use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
 use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
 use Sxbrsky\DependencyInjection\Exception\RuntimeException;
 use Sxbrsky\DependencyInjection\Invoker\Invoker;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\ExtendedSampleClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\InvokableClass;
-use Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass;
+use Sxbrsky\Tests\Fixtures\ExtendedSampleClass;
+use Sxbrsky\Tests\Fixtures\InvokableClass;
+use Sxbrsky\Tests\Fixtures\SampleClass;
 
 #[CoversClass(Invoker::class)]
 #[CoversClass(Container::class)]
@@ -82,7 +82,7 @@ class InvokerTest extends TestCase
     {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
-            'Method Sxbrsky\DependencyInjection\Tests\Unit\Fixtures\SampleClass::__invoke() does not exist'
+            'Method Sxbrsky\Tests\Fixtures\SampleClass::__invoke() does not exist'
         );
 
         $this->container->call([SampleClass::class]);

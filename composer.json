@@ -41,12 +41,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Sxbrsky\\DependencyInjection\\Tests\\Benchmark\\": "tests/benchmark/",
-            "Sxbrsky\\DependencyInjection\\Tests\\Unit\\": "tests/unit/"
+            "Sxbrsky\\Tests\\": "tests/Tests/",
+            "Sxbrsky\\Performance\\": "tests/Performance/"
         }
     },
     "config": {
         "preferred-install": "dist",
+        "optimize-autoloader": true,
         "sort-packages": true
     }
 }

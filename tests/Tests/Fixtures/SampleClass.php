@@ -9,8 +9,8 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Benchmark\Fixtures;
+namespace Sxbrsky\Tests\Fixtures;
 
-class FooBar
+class SampleClass
 {
 }

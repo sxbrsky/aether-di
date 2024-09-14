@@ -9,8 +9,12 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Tests\Unit\Fixtures;
+namespace Sxbrsky\Tests\Fixtures;
 
-class SampleClass
+class ExtendedSampleClass extends SampleClass
 {
+    public function __construct(
+        public string $name
+    ) {
+    }
 }
