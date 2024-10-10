@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Definition\Binding;
+namespace Aether\DependencyInjection\Definition\Binding;
 
-use Sxbrsky\DependencyInjection\Definition\Definition;
+use Aether\DependencyInjection\Definition\Definition;
 
 final readonly class Scalar implements Definition
 {

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,8 +9,8 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\Performance\Fixtures;
+namespace Aether\Tests\DependencyInjection\Fixtures;
 
-class FooBar
+interface SampleInterface
 {
 }

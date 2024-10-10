@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection;
+namespace Aether\DependencyInjection;
 
 use function array_key_exists;
 
@@ -22,17 +22,17 @@ use function is_scalar;
 use function is_string;
 use function property_exists;
 
-use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
-use Sxbrsky\DependencyInjection\Definition\Binding\Factory;
-use Sxbrsky\DependencyInjection\Definition\Binding\Scalar;
-use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
-use Sxbrsky\DependencyInjection\Definition\Binding\WeakReference;
+use Aether\DependencyInjection\Definition\Binding\Alias;
+use Aether\DependencyInjection\Definition\Binding\Factory;
+use Aether\DependencyInjection\Definition\Binding\Scalar;
+use Aether\DependencyInjection\Definition\Binding\Shared;
+use Aether\DependencyInjection\Definition\Binding\WeakReference;
 
-use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
-use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Sxbrsky\DependencyInjection\Definition\State;
-use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
-use Sxbrsky\DependencyInjection\Invoker\Invoker;
+use Aether\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Aether\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Aether\DependencyInjection\Definition\State;
+use Aether\DependencyInjection\Exception\EntryNotFoundException;
+use Aether\DependencyInjection\Invoker\Invoker;
 
 class Container implements ContainerInterface
 {

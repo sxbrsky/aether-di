@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\Tests\Unit\Definition\Resolver;
+namespace Aether\Tests\DependencyInjection\Definition\Resolver;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sxbrsky\DependencyInjection\Container;
-use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
-use Sxbrsky\DependencyInjection\Definition\Binding\Scalar;
-use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
-use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Sxbrsky\DependencyInjection\Definition\State;
-use Sxbrsky\DependencyInjection\Exception\ContainerException;
-use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
-use Sxbrsky\Tests\Fixtures\ClassACircularDependency;
-use Sxbrsky\Tests\Fixtures\SampleClass;
-use Sxbrsky\Tests\Fixtures\SampleInterface;
+use Aether\DependencyInjection\Container;
+use Aether\DependencyInjection\Definition\Binding\Alias;
+use Aether\DependencyInjection\Definition\Binding\Scalar;
+use Aether\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Aether\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Aether\DependencyInjection\Definition\State;
+use Aether\DependencyInjection\Exception\ContainerException;
+use Aether\DependencyInjection\Exception\EntryNotFoundException;
+use Aether\Tests\DependencyInjection\Fixtures\ClassACircularDependency;
+use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
+use Aether\Tests\DependencyInjection\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Scalar::class)]

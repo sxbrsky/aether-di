@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,14 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Definition\Resolver;
+namespace Aether\DependencyInjection\Definition\Resolver;
 
 use function array_key_exists;
 
 use ReflectionFunctionAbstract;
-use Sxbrsky\DependencyInjection\ContainerInterface;
+use Aether\DependencyInjection\ContainerInterface;
 
-use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
+use Aether\DependencyInjection\Definition\Exception\DependencyException;
 
 final class ParameterResolver implements ParameterResolverInterface
 {

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\Tests\Unit\Definition\Resolver;
+namespace Aether\Tests\DependencyInjection\Definition\Resolver;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use Sxbrsky\DependencyInjection\Container;
-use Sxbrsky\DependencyInjection\ContainerInterface;
-use Sxbrsky\DependencyInjection\Definition\Exception\DependencyException;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
-use Sxbrsky\Tests\Fixtures\ClassWithDefaultValue;
-use Sxbrsky\Tests\Fixtures\ClassWithDependency;
-use Sxbrsky\Tests\Fixtures\ExtendedSampleClass;
-use Sxbrsky\Tests\Fixtures\SampleClass;
-use Sxbrsky\Tests\Fixtures\TypedClass;
+use Aether\DependencyInjection\Container;
+use Aether\DependencyInjection\ContainerInterface;
+use Aether\DependencyInjection\Definition\Exception\DependencyException;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
+use Aether\Tests\DependencyInjection\Fixtures\ClassWithDefaultValue;
+use Aether\Tests\DependencyInjection\Fixtures\ClassWithDependency;
+use Aether\Tests\DependencyInjection\Fixtures\ExtendedSampleClass;
+use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
+use Aether\Tests\DependencyInjection\Fixtures\TypedClass;
 
 #[CoversClass(ParameterResolver::class)]
 class ParameterResolverTest extends TestCase

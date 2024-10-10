@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,14 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Definition;
+namespace Aether\DependencyInjection\Definition;
 
 final class State
 {
     /**
      * The bindings.
      *
-     * @var array<string, \Sxbrsky\DependencyInjection\Definition\Definition> $bindings
+     * @var array<string, \Aether\DependencyInjection\Definition\Definition> $bindings
      */
     public array $bindings = [];
 

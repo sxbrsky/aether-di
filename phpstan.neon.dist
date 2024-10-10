@@ -1,6 +1,0 @@
-parameters:
-	tmpDir: .phpstan.cache
-	level: 5
-	treatPhpDocTypesAsCertain: false
-	paths:
-		- src

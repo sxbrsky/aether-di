@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,21 +9,21 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\Tests\Unit\Invoker;
+namespace Aether\Tests\DependencyInjection\Invoker;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sxbrsky\DependencyInjection\Container;
-use Sxbrsky\DependencyInjection\ContainerInterface;
-use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
-use Sxbrsky\DependencyInjection\Definition\Binding\Shared;
-use Sxbrsky\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Sxbrsky\DependencyInjection\Exception\RuntimeException;
-use Sxbrsky\DependencyInjection\Invoker\Invoker;
-use Sxbrsky\Tests\Fixtures\ExtendedSampleClass;
-use Sxbrsky\Tests\Fixtures\InvokableClass;
-use Sxbrsky\Tests\Fixtures\SampleClass;
+use Aether\DependencyInjection\Container;
+use Aether\DependencyInjection\ContainerInterface;
+use Aether\DependencyInjection\Definition\Binding\Alias;
+use Aether\DependencyInjection\Definition\Binding\Shared;
+use Aether\DependencyInjection\Definition\Resolver\DefinitionResolver;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Aether\DependencyInjection\Exception\RuntimeException;
+use Aether\DependencyInjection\Invoker\Invoker;
+use Aether\Tests\DependencyInjection\Fixtures\ExtendedSampleClass;
+use Aether\Tests\DependencyInjection\Fixtures\InvokableClass;
+use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
 
 #[CoversClass(Invoker::class)]
 #[CoversClass(Container::class)]
@@ -82,7 +82,7 @@ class InvokerTest extends TestCase
     {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
-            'Method Sxbrsky\Tests\Fixtures\SampleClass::__invoke() does not exist'
+            'Method Aether\Tests\DependencyInjection\Fixtures\SampleClass::__invoke() does not exist'
         );
 
         $this->container->call([SampleClass::class]);

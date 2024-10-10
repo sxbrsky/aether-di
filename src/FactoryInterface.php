@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection;
+namespace Aether\DependencyInjection;
 
 interface FactoryInterface
 {
@@ -23,8 +23,8 @@ interface FactoryInterface
      *
      * @return ($abstract is class-string ? T : int|float|string|callable|object|null)
      *
-     * @throws \Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException
-     * @throws \Sxbrsky\DependencyInjection\Exception\EntryNotFoundException
+     * @throws \Aether\DependencyInjection\Definition\Exception\CircularDependencyException
+     * @throws \Aether\DependencyInjection\Exception\EntryNotFoundException
      *
      * @template T of object
      */

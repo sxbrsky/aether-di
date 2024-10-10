@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Invoker;
+namespace Aether\DependencyInjection\Invoker;
 
 use Closure;
 
@@ -20,13 +20,13 @@ use function is_string;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
-use Sxbrsky\DependencyInjection\ContainerInterface;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
+use Aether\DependencyInjection\ContainerInterface;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
+use Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
 
-use Sxbrsky\DependencyInjection\Exception\ContainerException;
-use Sxbrsky\DependencyInjection\Exception\RuntimeException;
-use Sxbrsky\DependencyInjection\InvokerInterface;
+use Aether\DependencyInjection\Exception\ContainerException;
+use Aether\DependencyInjection\Exception\RuntimeException;
+use Aether\DependencyInjection\InvokerInterface;
 
 final class Invoker implements InvokerInterface
 {

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,23 +9,23 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Definition\Resolver;
+namespace Aether\DependencyInjection\Definition\Resolver;
 
 use function array_key_exists;
 use function class_exists;
 use function interface_exists;
 
 use ReflectionClass;
-use Sxbrsky\DependencyInjection\ContainerInterface;
-use Sxbrsky\DependencyInjection\Definition\Binding\Alias;
-use Sxbrsky\DependencyInjection\Definition\Binding\Factory as FactoryBinding;
-use Sxbrsky\DependencyInjection\Definition\Binding\WeakReference;
-use Sxbrsky\DependencyInjection\Definition\Exception\CircularDependencyException;
-use Sxbrsky\DependencyInjection\Definition\State;
+use Aether\DependencyInjection\ContainerInterface;
+use Aether\DependencyInjection\Definition\Binding\Alias;
+use Aether\DependencyInjection\Definition\Binding\Factory as FactoryBinding;
+use Aether\DependencyInjection\Definition\Binding\WeakReference;
+use Aether\DependencyInjection\Definition\Exception\CircularDependencyException;
+use Aether\DependencyInjection\Definition\State;
 
-use Sxbrsky\DependencyInjection\Exception\ContainerException;
-use Sxbrsky\DependencyInjection\Exception\EntryNotFoundException;
-use Sxbrsky\DependencyInjection\FactoryInterface;
+use Aether\DependencyInjection\Exception\ContainerException;
+use Aether\DependencyInjection\Exception\EntryNotFoundException;
+use Aether\DependencyInjection\FactoryInterface;
 
 final class DefinitionResolver implements FactoryInterface
 {
@@ -39,7 +39,7 @@ final class DefinitionResolver implements FactoryInterface
     /**
      * The parameter resolver.
      *
-     * @var \Sxbrsky\DependencyInjection\Definition\Resolver\ParameterResolverInterface $parameterResolver
+     * @var \Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface $parameterResolver
      */
     private ParameterResolverInterface $parameterResolver;
 

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the sxbrsky/dependency-injection.
+ * This file is part of the aether/aether.
  *
  * Copyright (C) 2024 Dominik Szamburski
  *
@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Sxbrsky\DependencyInjection\Definition\Exception;
+namespace Aether\DependencyInjection\Definition\Exception;
 
-use Sxbrsky\DependencyInjection\Exception\ContainerException;
+use Aether\DependencyInjection\Exception\ContainerException;
 
 class CircularDependencyException extends ContainerException
 {
