@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Definition\Exception;
+namespace Aether\DI\Definition\Exception;
 
-use Aether\DependencyInjection\Exception\ContainerException;
+use Aether\Contracts\DI\Exception\ContainerException;
 
 class CircularDependencyException extends ContainerException
 {

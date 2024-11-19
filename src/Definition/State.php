@@ -9,21 +9,21 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Definition;
+namespace Aether\DI\Definition;
 
 final class State
 {
     /**
      * The bindings.
      *
-     * @var array<string, \Aether\DependencyInjection\Definition\Definition> $bindings
+     * @var array<string, \Aether\DI\Definition\Definition>
      */
     public array $bindings = [];
 
     /**
      * The shared instances.
      *
-     * @var array<string, int|float|string|callable|object> $instances
+     * @var array<string, int|float|string|callable|object>
      */
     public array $instances = [];
 }

@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\Tests\DependencyInjection\Fixtures;
+namespace Aether\Tests\DI\Fixtures;
 
 interface SampleInterface
 {

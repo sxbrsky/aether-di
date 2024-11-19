@@ -9,43 +9,43 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Definition\Resolver;
+namespace Aether\DI\Definition\Resolver;
+
+use Aether\Contracts\DI\Container;
+use Aether\Contracts\DI\Exception\ContainerException;
+use Aether\Contracts\DI\Exception\EntryNotFoundException;
+use Aether\Contracts\DI\Factory;
+use Aether\DI\Definition\Binding\Alias;
+use Aether\DI\Definition\Binding\Factory as FactoryBinding;
+use Aether\DI\Definition\Binding\WeakReference;
+use Aether\DI\Definition\Exception\CircularDependencyException;
+use Aether\DI\Definition\State;
 
 use function array_key_exists;
 use function class_exists;
 use function interface_exists;
 
 use ReflectionClass;
-use Aether\DependencyInjection\ContainerInterface;
-use Aether\DependencyInjection\Definition\Binding\Alias;
-use Aether\DependencyInjection\Definition\Binding\Factory as FactoryBinding;
-use Aether\DependencyInjection\Definition\Binding\WeakReference;
-use Aether\DependencyInjection\Definition\Exception\CircularDependencyException;
-use Aether\DependencyInjection\Definition\State;
 
-use Aether\DependencyInjection\Exception\ContainerException;
-use Aether\DependencyInjection\Exception\EntryNotFoundException;
-use Aether\DependencyInjection\FactoryInterface;
-
-final class DefinitionResolver implements FactoryInterface
+final class DefinitionResolver implements Factory
 {
     /**
      * The stack of concrete currently being built.
      *
-     * @var array<string, bool> $buildStack
+     * @var array<string, bool>
      */
     private array $buildStack = [];
 
     /**
      * The parameter resolver.
      *
-     * @var \Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface $parameterResolver
+     * @var \Aether\DI\Definition\Resolver\ParameterResolverInterface
      */
     private ParameterResolverInterface $parameterResolver;
 
     public function __construct(
         private readonly State $state,
-        private readonly ContainerInterface $container
+        private readonly Container $container
     ) {
         $this->parameterResolver = new ParameterResolver($this->container);
     }
@@ -84,7 +84,7 @@ final class DefinitionResolver implements FactoryInterface
             return $concrete->value->get();
         }
 
-        if (!\property_exists($concrete, 'value')) {
+        if (! \property_exists($concrete, 'value')) {
             return null;
         }
 
@@ -112,13 +112,13 @@ final class DefinitionResolver implements FactoryInterface
             );
         }
 
-        if (!(class_exists($abstract) || interface_exists($abstract))) {
+        if (! (class_exists($abstract) || interface_exists($abstract))) {
             throw new EntryNotFoundException($abstract);
         }
 
         $reflection = new ReflectionClass($abstract);
 
-        if (!$reflection->isInstantiable()) {
+        if (! $reflection->isInstantiable()) {
             throw new ContainerException(
                 "$abstract is not instantiable."
             );

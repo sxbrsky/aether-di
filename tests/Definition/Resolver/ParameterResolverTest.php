@@ -9,27 +9,27 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\Tests\DependencyInjection\Definition\Resolver;
+namespace Aether\Tests\DI\Definition\Resolver;
 
+use Aether\Contracts\DI\Container as ContainerContract;
+use Aether\DI\Container;
+use Aether\DI\Definition\Exception\DependencyException;
+use Aether\DI\Definition\Resolver\ParameterResolver;
+use Aether\DI\Definition\Resolver\ParameterResolverInterface;
+use Aether\Tests\DI\Fixtures\ClassWithDefaultValue;
+use Aether\Tests\DI\Fixtures\ClassWithDependency;
+use Aether\Tests\DI\Fixtures\ExtendedSampleClass;
+use Aether\Tests\DI\Fixtures\SampleClass;
+use Aether\Tests\DI\Fixtures\TypedClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use Aether\DependencyInjection\Container;
-use Aether\DependencyInjection\ContainerInterface;
-use Aether\DependencyInjection\Definition\Exception\DependencyException;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
-use Aether\Tests\DependencyInjection\Fixtures\ClassWithDefaultValue;
-use Aether\Tests\DependencyInjection\Fixtures\ClassWithDependency;
-use Aether\Tests\DependencyInjection\Fixtures\ExtendedSampleClass;
-use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
-use Aether\Tests\DependencyInjection\Fixtures\TypedClass;
 
 #[CoversClass(ParameterResolver::class)]
 class ParameterResolverTest extends TestCase
 {
-    private MockObject|ContainerInterface $container;
+    private MockObject|ContainerContract $container;
     private ParameterResolverInterface $resolver;
 
     public function setUp(): void

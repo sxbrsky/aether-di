@@ -9,9 +9,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Definition\Binding;
+namespace Aether\DI\Definition\Binding;
 
-use Aether\DependencyInjection\Definition\Definition;
+use Aether\DI\Definition\Definition;
 
 final class WeakReference implements Definition
 {

@@ -9,22 +9,22 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\Tests\DependencyInjection\Definition\Resolver;
+namespace Aether\Tests\DI\Definition\Resolver;
 
+use Aether\Contracts\DI\Exception\ContainerException;
+use Aether\Contracts\DI\Exception\EntryNotFoundException;
+use Aether\DI\Container;
+use Aether\DI\Definition\Binding\Alias;
+use Aether\DI\Definition\Binding\Scalar;
+use Aether\DI\Definition\Exception\CircularDependencyException;
+use Aether\DI\Definition\Resolver\DefinitionResolver;
+use Aether\DI\Definition\Resolver\ParameterResolver;
+use Aether\DI\Definition\State;
+use Aether\Tests\DI\Fixtures\ClassACircularDependency;
+use Aether\Tests\DI\Fixtures\SampleClass;
+use Aether\Tests\DI\Fixtures\SampleInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Aether\DependencyInjection\Container;
-use Aether\DependencyInjection\Definition\Binding\Alias;
-use Aether\DependencyInjection\Definition\Binding\Scalar;
-use Aether\DependencyInjection\Definition\Exception\CircularDependencyException;
-use Aether\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Aether\DependencyInjection\Definition\State;
-use Aether\DependencyInjection\Exception\ContainerException;
-use Aether\DependencyInjection\Exception\EntryNotFoundException;
-use Aether\Tests\DependencyInjection\Fixtures\ClassACircularDependency;
-use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
-use Aether\Tests\DependencyInjection\Fixtures\SampleInterface;
 
 #[CoversClass(Alias::class)]
 #[CoversClass(Scalar::class)]

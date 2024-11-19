@@ -1,6 +1,6 @@
 {
-  "name": "aether/dependency-injection",
-  "description": "The Aether dependency injection package.",
+  "name": "aether/di",
+  "description": "The Aether di package.",
   "license": "MIT",
   "type": "library",
   "support": {
@@ -17,12 +17,12 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "Aether\\DependencyInjection\\": "src/"
+      "Aether\\DI\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Aether\\Tests\\DependencyInjection\\": "tests/"
+      "Aether\\Tests\\DI\\": "tests/"
     }
   },
   "config": {

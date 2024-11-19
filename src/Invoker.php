@@ -9,8 +9,14 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Invoker;
+namespace Aether\DI;
 
+use Aether\Contracts\DI\Container;
+use Aether\Contracts\DI\Exception\ContainerException;
+use Aether\Contracts\DI\Exception\RuntimeException;
+use Aether\Contracts\DI\Invoker as InvokerContract;
+use Aether\DI\Definition\Resolver\ParameterResolver;
+use Aether\DI\Definition\Resolver\ParameterResolverInterface;
 use Closure;
 
 use function is_array;
@@ -20,20 +26,13 @@ use function is_string;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
-use Aether\DependencyInjection\ContainerInterface;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolverInterface;
 
-use Aether\DependencyInjection\Exception\ContainerException;
-use Aether\DependencyInjection\Exception\RuntimeException;
-use Aether\DependencyInjection\InvokerInterface;
-
-final class Invoker implements InvokerInterface
+final class Invoker implements InvokerContract
 {
     private readonly ParameterResolverInterface $resolver;
 
     public function __construct(
-        private readonly ContainerInterface $container
+        private readonly Container $container
     ) {
         $this->resolver = new ParameterResolver($container);
     }
@@ -44,7 +43,7 @@ final class Invoker implements InvokerInterface
     public function call(callable|array|string $callable, array $parameters = []): mixed
     {
         if (is_array($callable)) {
-            if (!isset($callable[1])) {
+            if (! isset($callable[1])) {
                 $callable[1] = '__invoke';
             }
 

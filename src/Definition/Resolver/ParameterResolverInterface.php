@@ -9,7 +9,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\DependencyInjection\Definition\Resolver;
+namespace Aether\DI\Definition\Resolver;
 
 use ReflectionFunctionAbstract;
 

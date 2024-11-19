@@ -9,21 +9,20 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Aether\Tests\DependencyInjection\Invoker;
+namespace Aether\Tests\DI;
 
+use Aether\Contracts\DI\Exception\RuntimeException;
+use Aether\DI\Container;
+use Aether\DI\Definition\Binding\Alias;
+use Aether\DI\Definition\Binding\Shared;
+use Aether\DI\Definition\Resolver\DefinitionResolver;
+use Aether\DI\Definition\Resolver\ParameterResolver;
+use Aether\DI\Invoker;
+use Aether\Tests\DI\Fixtures\ExtendedSampleClass;
+use Aether\Tests\DI\Fixtures\InvokableClass;
+use Aether\Tests\DI\Fixtures\SampleClass;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Aether\DependencyInjection\Container;
-use Aether\DependencyInjection\ContainerInterface;
-use Aether\DependencyInjection\Definition\Binding\Alias;
-use Aether\DependencyInjection\Definition\Binding\Shared;
-use Aether\DependencyInjection\Definition\Resolver\DefinitionResolver;
-use Aether\DependencyInjection\Definition\Resolver\ParameterResolver;
-use Aether\DependencyInjection\Exception\RuntimeException;
-use Aether\DependencyInjection\Invoker\Invoker;
-use Aether\Tests\DependencyInjection\Fixtures\ExtendedSampleClass;
-use Aether\Tests\DependencyInjection\Fixtures\InvokableClass;
-use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
 
 #[CoversClass(Invoker::class)]
 #[CoversClass(Container::class)]
@@ -33,7 +32,7 @@ use Aether\Tests\DependencyInjection\Fixtures\SampleClass;
 #[CoversClass(ParameterResolver::class)]
 class InvokerTest extends TestCase
 {
-    private ContainerInterface $container;
+    private Container $container;
 
     public function setUp(): void
     {
@@ -82,7 +81,7 @@ class InvokerTest extends TestCase
     {
         self::expectException(RuntimeException::class);
         self::expectExceptionMessage(
-            'Method Aether\Tests\DependencyInjection\Fixtures\SampleClass::__invoke() does not exist'
+            'Method Aether\Tests\DI\Fixtures\SampleClass::__invoke() does not exist'
         );
 
         $this->container->call([SampleClass::class]);

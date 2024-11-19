@@ -1,1 +1,1 @@
-# Aether Dependency Injection Component
+# Aether DI Component
